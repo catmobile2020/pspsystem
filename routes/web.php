@@ -19,7 +19,10 @@ Route::group(['prefix'=>'/admin'],function (){
 
         Route::group(['middleware'=>'type:admin'],function (){
             Route::resource('programs','ProgramController');
-//            Route::get('programs/{program}/destroy','ProgramController@destroy')->name('programs.destroy');
+
+            Route::resource('companies','CompanyController');
+
+            Route::resource('products','ProductController');
 
             Route::resource('callcenters','CallCenterController');
             Route::get('callcenters/{callcenter}/destroy','CallCenterController@destroy')->name('callcenters.destroy');

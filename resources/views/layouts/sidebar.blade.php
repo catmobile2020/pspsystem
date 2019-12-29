@@ -30,6 +30,20 @@
                     <li class="{{Route::is('programs.index') ? 'active' : ''}}"><a href="{{route('programs.index')}}"><span class="title">Show All</span></a></li>
                 </ul>
             </li>
+            <li class="has-sub {{Route::is('companies.*') ? 'active' : ''}}">
+                <a href=""><i class="icon-book-open"></i><span class="title">Companies</span></a>
+                <ul class="nav collapse">
+                    <li class="{{Route::is('companies.create') ? 'active' : ''}}"><a href="{{route('companies.create')}}"><span class="title">Add New</span></a></li>
+                    <li class="{{Route::is('companies.index') ? 'active' : ''}}"><a href="{{route('companies.index')}}"><span class="title">Show All</span></a></li>
+                </ul>
+            </li>
+            <li class="has-sub {{Route::is('products.*') ? 'active' : ''}}">
+                <a href=""><i class="icon-progress-0"></i><span class="title">Products</span></a>
+                <ul class="nav collapse">
+                    <li class="{{Route::is('products.create') ? 'active' : ''}}"><a href="{{route('products.create')}}"><span class="title">Add New</span></a></li>
+                    <li class="{{Route::is('products.index') ? 'active' : ''}}"><a href="{{route('products.index')}}"><span class="title">Show All</span></a></li>
+                </ul>
+            </li>
             <li class="has-sub {{Route::is('users.*') ? 'active' : ''}}">
                 <a href=""><i class="icon-layout"></i><span class="title">Call centers</span></a>
                 <ul class="nav collapse">

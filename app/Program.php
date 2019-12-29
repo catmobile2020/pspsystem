@@ -17,4 +17,9 @@ class Program extends Model
     {
         return $this->hasManyThrough('App\User', 'App\CallCenter')->where('users.type', 4);
     }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

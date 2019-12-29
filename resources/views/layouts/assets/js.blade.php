@@ -1,4 +1,4 @@
-<script src="{{asset('js/app.js')}}"></script>
+{{--<script src="{{asset('js/app.js')}}"></script>--}}
 
 <!--Load JQuery-->
 <script src="{{asset('assets/js/jquery.min.js')}}"></script>
@@ -16,6 +16,9 @@
 <script src="{{asset('assets/js/plugins/datatables/vfs_fonts.js')}}"></script>
 <script src="{{asset('assets/js/plugins/datatables/extensions/Buttons/js/buttons.html5.js')}}"></script>
 <script src="{{asset('assets/js/plugins/datatables/extensions/Buttons/js/buttons.colVis.js')}}"></script>
+@if(count($errors))
+    @include('layouts.old')
+@endif
 <script>
     $(document).ready(function () {
         $('.dataTables-example').DataTable({
