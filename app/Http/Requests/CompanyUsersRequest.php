@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CallCenterRequest extends FormRequest
+class CompanyUsersRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,22 +25,23 @@ class CallCenterRequest extends FormRequest
     {
         $roles = [
             'name'=>'required',
+            'type'=>'required',
             'email'=>'required|email',
             'product_id'=>'required|exists:products,id',
         ];
 
-        if ($this->routeIs('callcenters.update'))
+        if ($this->routeIs('marketing.update'))
         {
-            $roles['email'] ='required|unique:call_centers,email,'.$this->callcenter->id;
-            $roles['username'] ='required|unique:call_centers,username,'.$this->callcenter->id;
+            $roles['email'] ='required|unique:company_users,email,'.$this->marketing->id;
+            $roles['username'] ='required|unique:company_users,username,'.$this->marketing->id;
             if ($this->has('password') and $this->get('password') !== null)
             {
                 $roles['password']='required|confirmed|min:6';
             }
         }else
         {
-            $roles['email'] ='required|unique:call_centers,email';
-            $roles['username'] ='required|unique:call_centers,username';
+            $roles['email'] ='required|unique:company_users,email';
+            $roles['username'] ='required|unique:company_users,username';
             $roles['password'] ='required|confirmed|min:6';
         }
         return $roles;

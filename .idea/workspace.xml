@@ -3,10 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="61e52b0f-1de5-4c4b-97a6-bccdeb0fd22c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Company.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Company.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/assets/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/assets/js.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/CompanyUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/CompanyUsers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CallCenterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CallCenterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CallCenterRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CallCenterRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/callcenter/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/callcenter/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/callcenter/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/callcenter/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/company/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/company/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -131,9 +135,12 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1VThw6liTEMgZrhxYehvx6mITz6" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/pages/auth" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -144,10 +151,15 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Http/Controllers/Auth" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/pages/auth" />
+      <recent name="$PROJECT_DIR$/resources/views/pages/company" />
+      <recent name="$PROJECT_DIR$/resources/views/pages/marketing" />
       <recent name="C:\xampp\htdocs\pspsystem\resources\views\pages" />
       <recent name="C:\xampp\htdocs\pspsystem\resources\views\layouts" />
-      <recent name="C:\xampp\htdocs\pspsystem" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -181,6 +193,7 @@
       <workItem from="1577283228987" duration="719000" />
       <workItem from="1577360877366" duration="2565000" />
       <workItem from="1577623220018" duration="7066000" />
+      <workItem from="1577699838950" duration="7007000" />
     </task>
     <servers />
   </component>
@@ -192,7 +205,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
