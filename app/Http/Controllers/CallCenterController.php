@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CallCenter;
 use App\Http\Requests\CallCenterRequest;
+use App\Product;
 use App\Program;
 use Illuminate\Http\Request;
 
@@ -18,8 +19,8 @@ class CallCenterController extends Controller
     public function create()
     {
         $callcenter = new CallCenter;
-        $programs = Program::all();
-        return view('pages.callcenter.form',compact('callcenter','programs'));
+        $products = Product::all();
+        return view('pages.callcenter.form',compact('callcenter','products'));
     }
 
 
@@ -31,8 +32,8 @@ class CallCenterController extends Controller
 
     public function edit(CallCenter $callcenter)
     {
-        $programs = Program::all();
-        return view('pages.callcenter.form',compact('callcenter','programs'));
+        $products = Product::all();
+        return view('pages.callcenter.form',compact('callcenter','products'));
     }
 
 

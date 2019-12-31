@@ -13,8 +13,8 @@ Route::group(['prefix'=>'/admin'],function (){
         Route::get('/','HomeController@index')->name('home');
         Route::get('/novartis-programs','HomeController@myPrograms')->name('novartis.programs');
 
-        Route::get('/profile','ProfileController@index')->name('profile');
-        Route::post('/profile','ProfileController@update')->name('profile.update');
+//        Route::get('/profile','ProfileController@index')->name('profile');
+//        Route::post('/profile','ProfileController@update')->name('profile.update');
 
 
         Route::group(['middleware'=>'type:admin'],function (){
@@ -23,6 +23,8 @@ Route::group(['prefix'=>'/admin'],function (){
             Route::resource('companies','CompanyController');
 
             Route::resource('products','ProductController');
+
+            Route::resource('companies/{company}/marketing','CompanyUsersController');
 
             Route::resource('callcenters','CallCenterController');
             Route::get('callcenters/{callcenter}/destroy','CallCenterController@destroy')->name('callcenters.destroy');
@@ -37,25 +39,25 @@ Route::group(['prefix'=>'/admin'],function (){
 
 Route::group(['prefix'=>'/marketing'],function (){
     Route::group(['namespace'=>'Auth'],function (){
-        Route::get('/login','AdminController@index')->name('marketing.login');
-        Route::post('/login','AdminController@login')->name('marketing.login');
-        Route::get('/logout','AdminController@logout')->name('marketing.logout');
+        Route::get('/login','CompanyUsersController@index')->name('marketing.login');
+        Route::post('/login','CompanyUsersController@login')->name('marketing.login');
+        Route::get('/logout','CompanyUsersController@logout')->name('marketing.logout');
     });
-
-    Route::group(['middleware'=>['auth:admin']],function (){
+//
+    Route::group(['middleware'=>['auth:marketing']],function (){
         Route::get('/','HomeController@index')->name('home');
-        Route::get('/novartis-programs','HomeController@myPrograms')->name('novartis.programs');
-        Route::get('/statistics','MarketingController@index')->name('marketing.index');
-        Route::get('/patient-statistics','MarketingController@patientStatistics')->name('marketing.patient-statistics');
-        Route::get('/doctor-statistics','MarketingController@doctorStatistics')->name('marketing.doctor-statistics');
-        Route::get('/pharmacy-statistics','MarketingController@pharmacyStatistics')->name('marketing.pharmacy-statistics');
-        Route::get('/laboratory-statistics','MarketingController@labStatistics')->name('marketing.lab-statistics');
-        Route::get('/hospital-statistics','MarketingController@hospitalStatistics')->name('marketing.hospital-statistics');
-        Route::get('/health-statistics','MarketingController@healthStatistics')->name('marketing.health-statistics');
+//        Route::get('/novartis-programs','HomeController@myPrograms')->name('novartis.programs');
+//        Route::get('/statistics','MarketingController@index')->name('marketing.index');
+//        Route::get('/patient-statistics','MarketingController@patientStatistics')->name('marketing.patient-statistics');
+//        Route::get('/doctor-statistics','MarketingController@doctorStatistics')->name('marketing.doctor-statistics');
+//        Route::get('/pharmacy-statistics','MarketingController@pharmacyStatistics')->name('marketing.pharmacy-statistics');
+//        Route::get('/laboratory-statistics','MarketingController@labStatistics')->name('marketing.lab-statistics');
+//        Route::get('/hospital-statistics','MarketingController@hospitalStatistics')->name('marketing.hospital-statistics');
+//        Route::get('/health-statistics','MarketingController@healthStatistics')->name('marketing.health-statistics');
 
 
-        Route::get('/profile','ProfileController@index')->name('profile');
-        Route::post('/profile','ProfileController@update')->name('profile.update');
+//        Route::get('/profile','ProfileController@index')->name('profile');
+//        Route::post('/profile','ProfileController@update')->name('profile.update');
 
 
     });
@@ -70,8 +72,8 @@ Route::group(['prefix'=>'/call-centers'],function (){
     Route::group(['middleware'=>['auth:callcenter']],function (){
         Route::get('/','HomeController@index')->name('home');
 
-        Route::get('/profile','ProfileController@index')->name('profile');
-        Route::post('/profile','ProfileController@update')->name('profile.update');
+//        Route::get('/profile','ProfileController@index')->name('profile');
+//        Route::post('/profile','ProfileController@update')->name('profile.update');
 
         Route::group(['middleware'=>'type:callcenter'],function (){
 

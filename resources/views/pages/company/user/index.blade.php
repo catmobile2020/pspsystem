@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
-@section('title','companies')
+@section('title','users')
 
 @section('content')
     <div class="main-content">
-        <h1 class="page-title">companies</h1>
+        <h1 class="page-title">users</h1>
         <!-- Breadcrumb -->
         <ol class="breadcrumb breadcrumb-2">
             <li><a href="{{route('home')}}"><i class="fa fa-home"></i>Home</a></li>
-            <li class="active"><strong>companies</strong></li>
+            <li class="active"><strong>users</strong></li>
         </ol>
         <div class="row">
             <div class="col-lg-12">
@@ -19,6 +19,7 @@
                             <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
                             <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
                         </ul>
+                        <a href="{{route('marketing.create',$company->id)}}" class="btn btn-success">Add New</a>
                     </div>
                     <div class="panel-body">
                         @if (session()->has('message'))
@@ -34,8 +35,10 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Address</th>
+                                    <th>name</th>
+                                    <th>username</th>
+                                    <th>email</th>
+                                    <th>product</th>
                                     <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
@@ -45,19 +48,13 @@
                                     <tr class="gradeX">
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$row->name}}</td>
-                                        <td>{{$row->address}}</td>
+                                        <td>{{$row->username}}</td>
+                                        <td>{{$row->email}}</td>
+                                        <td>{{$row->product->name}}</td>
                                         <td>{{$row->created_at->format('Y-m-d')}}</td>
                                         <td class="size-80">
-                                            <a href="{{route('marketing.index',$row->id)}}">Users</a>
-                                            <a href="{{route('companies.edit',$row->id)}}">Edit</a>
-{{--                                            <a href="{{route('companies.destroy',$row->id)}}">Delete</a>--}}
-{{--                                            <div class="dropdown">--}}
-{{--                                                <a href="" data-toggle="dropdown" class="more-link"><i class="icon-dot-3 ellipsis-icon"></i></a>--}}
-{{--                                                <ul class="dropdown-menu dropdown-menu-right">--}}
-{{--                                                    <li><a href="{{route('companies.edit',$row->id)}}">Edit</a></li>--}}
-{{--                                                    <li><a href="{{route('companies.destroy',$row->id)}}">Delete</a></li>--}}
-{{--                                                </ul>--}}
-{{--                                            </div>--}}
+                                            <a href="{{route('marketing.edit',[$company->id,$row->id])}}">Edit</a>
+                                            <a href="{{route('marketing.destroy',[$company->id,$row->id])}}">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -66,8 +63,10 @@
                                 <tfoot>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Address</th>
+                                    <th>name</th>
+                                    <th>username</th>
+                                    <th>email</th>
+                                    <th>product</th>
                                     <th>Created At</th>
                                     <th>Action</th>
                                 </tr>

@@ -37,7 +37,7 @@
                                     <th>name</th>
                                     <th>username</th>
                                     <th>email</th>
-                                    <th>program</th>
+                                    <th>product</th>
                                     <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
@@ -49,7 +49,7 @@
                                         <td>{{$row->name}}</td>
                                         <td>{{$row->username}}</td>
                                         <td>{{$row->email}}</td>
-                                        <td>{{$row->program->name}}</td>
+                                        <td>{{$row->product->name}}</td>
                                         <td>{{$row->created_at->format('Y-m-d')}}</td>
                                         <td class="size-80">
                                             <a href="{{route('callcenters.edit',$row->id)}}">Edit</a>
@@ -72,7 +72,7 @@
                                     <th>name</th>
                                     <th>username</th>
                                     <th>email</th>
-                                    <th>program</th>
+                                    <th>product</th>
                                     <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
