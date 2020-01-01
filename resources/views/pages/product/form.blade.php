@@ -49,13 +49,13 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="paid_num">paid num</label>
-                                    <input type="text" name="paid_num" class="form-control" id="paid_num" placeholder="paid num" value="{{$product->paid_num}}">
+                                    <input type="text" name="paid_num" class="form-control" id="paid_num" placeholder="paid num" value="{{$product->paid_num}}" {{isset($product->id) ? 'readonly' : ''}}>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="free_num">free num</label>
-                                    <input type="text" name="free_num" class="form-control" id="free_num" placeholder="free num" value="{{$product->free_num}}">
+                                    <input type="text" name="free_num" class="form-control" id="free_num" placeholder="free num" value="{{$product->free_num}}" {{isset($product->id) ? 'readonly' : ''}}>
                                 </div>
                             </div>
                             <div class="col-lg-6">

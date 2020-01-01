@@ -33,14 +33,16 @@ class PharmacyRequest extends FormRequest
 
         if ($this->routeIs('pharmacies.update'))
         {
-            $roles['username'] ='required|unique:users,username,'.$this->pharmacy->id;
+            $roles['username'] ='required|unique:pharmacies,username,'.$this->pharmacy->id;
+            $roles['email'] ='required|email|unique:pharmacies,email,'.$this->pharmacy->id;
             if ($this->has('password') and $this->get('password') !== null)
             {
                 $roles['password']='required|confirmed|min:6';
             }
         }else
         {
-            $roles['username'] ='required|unique:users,username';
+            $roles['email'] ='required|email|unique:pharmacies,email';
+            $roles['username'] ='required|unique:pharmacies,username';
             $roles['password'] ='required|confirmed|min:6';
         }
         return $roles;

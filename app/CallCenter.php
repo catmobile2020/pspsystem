@@ -35,7 +35,7 @@ class CallCenter extends Authenticatable
 
     public function product()
     {
-        return $this->belongsTo('App\Product');
+        return $this->belongsTo('App\Product')->withDefault();
     }
 
     public function users()

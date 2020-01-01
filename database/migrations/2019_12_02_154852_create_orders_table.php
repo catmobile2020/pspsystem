@@ -25,8 +25,8 @@ class CreateOrdersTable extends Migration
             $table->foreign('batch_id')->references('id')->on('batches');
             $table->unsignedInteger('patient_id')->nullable();
             $table->foreign('patient_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedInteger('pharmacy_id')->nullable();
+            $table->foreign('pharmacy_id')->references('id')->on('pharmacies')->onDelete('cascade');
             $table->timestamps();
         });
     }

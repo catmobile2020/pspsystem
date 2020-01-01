@@ -52,6 +52,10 @@ return [
             'driver' => 'session',
             'provider' => 'marketing',
         ],
+        'pharmacy' => [
+            'driver' => 'session',
+            'provider' => 'pharmacy',
+        ],
 
         'api' => [
             'driver' => 'token',
@@ -93,6 +97,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\CompanyUsers::class,
         ],
+        'pharmacy' => [
+            'driver' => 'eloquent',
+            'model' => App\Pharmacy::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -133,6 +141,11 @@ return [
         ],
         'marketing' => [
             'provider' => 'marketing',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'pharmacy' => [
+            'provider' => 'pharmacy',
             'table' => 'password_resets',
             'expire' => 60,
         ],

@@ -4,21 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Governorate;
 use App\Http\Requests\PharmacyRequest;
-use App\User;
+use App\Pharmacy;
 use Illuminate\Http\Request;
 
 class PharmacyController extends Controller
 {
     public function index(Request $request)
     {
-        $auth_user =auth('callcenter')->user();
-        $rows = $auth_user->users()->pharmacy()->latest()->paginate(20);
+        $rows = Pharmacy::latest()->paginate(20);
         return view('pages.pharmacy.index',compact('rows'));
     }
 
     public function create()
     {
-        $pharmacy = new User();
+        $pharmacy = new Pharmacy();
         $governorates = Governorate::all();
         return view('pages.pharmacy.form',compact('pharmacy', 'governorates'));
     }
@@ -27,20 +26,18 @@ class PharmacyController extends Controller
     public function store(PharmacyRequest $request)
     {
         $inputs = $request->all();
-        $inputs['type'] = 2;
-        $inputs['call_center_id'] = auth('callcenter')->id();
-        User::create($inputs);
+        Pharmacy::create($inputs);
         return redirect()->route('pharmacies.index')->with('message','Done Successfully');
     }
 
-    public function edit(User $pharmacy)
+    public function edit(Pharmacy $pharmacy)
     {
         $governorates = Governorate::all();
         return view('pages.pharmacy.form',compact('pharmacy', 'governorates'));
     }
 
 
-    public function update(PharmacyRequest $request, User $pharmacy)
+    public function update(PharmacyRequest $request, Pharmacy $pharmacy)
     {
         if (!$request->password)
         {
@@ -51,7 +48,7 @@ class PharmacyController extends Controller
     }
 
 
-    public function destroy(User $pharmacy)
+    public function destroy(Pharmacy $pharmacy)
     {
         $pharmacy->delete();
         return redirect()->route('pharmacies.index')->with('message','Done Successfully');

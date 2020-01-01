@@ -1,9 +1,23 @@
 <!-- Main header -->
 <div class="main-header row">
-    <div class="col-sm-6">
+    <div class="col-sm-6 col-xs-7">
 
         <!-- User info -->
-
+        <ul class="user-info pull-left">
+            <li class="profile-info dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
+{{--                    @if (auth('admin')->check())--}}
+{{--                        {{auth('admin')->user()->name}}--}}
+{{--                    @elseif(auth('callcenter')->check())--}}
+{{--                        {{auth('callcenter')->user()->name}}--}}
+{{--                    @else--}}
+{{--                        {{auth('web')->user()->name}}--}}
+{{--                    @endif--}}
+                        {{auth(explode('/',request()->route()->uri())[0])->user()->name}}
+                    <span class="caret"></span>
+                </a>
+            </li>
+        </ul>
         <!-- /user info -->
 
     </div>
@@ -15,26 +29,6 @@
                 <!-- Notifications -->
                  <notify></notify>
                 <!-- /notifications -->
-            </ul>
-            <ul class="user-info pull-right">
-                <li class="profile-info dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
-                        @if (auth('admin')->check())
-                            {{auth('admin')->user()->name}}
-                        @elseif(auth('callcenter')->check())
-                            {{auth('callcenter')->user()->name}}
-                        @else
-                            {{auth('web')->user()->name}}
-                        @endif
-                    </a>
-                    |
-                </li>
-
-                <li>
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
-                         Logout <i class="icon-logout"></i>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>

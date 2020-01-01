@@ -39,24 +39,24 @@
                                     <th>CLIENT NAME	</th>
                                     <th>Pharmacy NAME	</th>
                                     <th>PURCHASE TYPE</th>
-                                    <th>Action</th>
+{{--                                    <th>Action</th>--}}
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($rows as $row)
                                     <tr class="gradeX">
                                         <td>{{$loop->iteration}}</td>
-                                        
+
                                         <td>{{$row->created_at->format('Y-m-d h:i A')}}</td>
                                         <td>{{$row->patient->serial_number}}</td>
                                         <td>{{$row->patient->name}}</td>
-                                        <td>{{$row->user->name}}</td>
+                                        <td>{{$row->pharmacy->name}}</td>
                                         <td>
                                             <img src="{{$row->has_free_photo}}" />
                                         </td>
-                                        <td class="size-80">
-                                            <a href="{{route('orders.edit',$row->id)}}">Edit</a>
-                                            <a href="{{route('orders.destroy',$row->id)}}">Delete</a>
+{{--                                        <td class="size-80">--}}
+{{--                                            <a href="{{route('orders.edit',$row->id)}}">Edit</a>--}}
+{{--                                            <a href="{{route('orders.destroy',$row->id)}}">Delete</a>--}}
 {{--                                            <div class="dropdown">--}}
 {{--                                                <a href="" data-toggle="dropdown" class="more-link"><i class="icon-dot-3 ellipsis-icon"></i></a>--}}
 {{--                                                <ul class="dropdown-menu dropdown-menu-right">--}}
@@ -64,7 +64,7 @@
 {{--                                                    <li><a href="{{route('orders.destroy',$row->id)}}">Delete</a></li>--}}
 {{--                                                </ul>--}}
 {{--                                            </div>--}}
-                                        </td>
+{{--                                        </td>--}}
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -77,7 +77,7 @@
                                     <th>CLIENT NAME	</th>
                                     <th>Pharmacy NAME	</th>
                                     <th>PURCHASE TYPE</th>
-                                    <th>Action</th>
+{{--                                    <th>Action</th>--}}
                                 </tr>
                                 </tfoot>
                             </table>

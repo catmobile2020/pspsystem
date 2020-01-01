@@ -26,13 +26,15 @@ class CompanyUsersRequest extends FormRequest
         $roles = [
             'name'=>'required',
             'type'=>'required',
-            'email'=>'required|email',
-            'product_id'=>'required|exists:products,id',
         ];
+        if ($this->request->get('type') != 1)
+        {
+            $roles['product_id'] = 'required|exists:products,id';
+        }
 
         if ($this->routeIs('marketing.update'))
         {
-            $roles['email'] ='required|unique:company_users,email,'.$this->marketing->id;
+            $roles['email'] ='required|email|unique:company_users,email,'.$this->marketing->id;
             $roles['username'] ='required|unique:company_users,username,'.$this->marketing->id;
             if ($this->has('password') and $this->get('password') !== null)
             {
@@ -40,7 +42,7 @@ class CompanyUsersRequest extends FormRequest
             }
         }else
         {
-            $roles['email'] ='required|unique:company_users,email';
+            $roles['email'] ='required|email|unique:company_users,email';
             $roles['username'] ='required|unique:company_users,username';
             $roles['password'] ='required|confirmed|min:6';
         }

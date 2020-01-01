@@ -48,7 +48,7 @@ class ProductController extends Controller
 
     public function update(ProductRequest $request, Product $product)
     {
-        $product->update($request->except('photo'));
+        $product->update($request->except('photo','paid_num','free_num'));
         if ($request->photo) {
             $this->upload($request->photo,$product,null,true);
         }

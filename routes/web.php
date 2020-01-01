@@ -11,7 +11,7 @@ Route::group(['prefix'=>'/admin'],function (){
 
     Route::group(['middleware'=>['auth:admin']],function (){
         Route::get('/','HomeController@index')->name('home');
-        Route::get('/novartis-programs','HomeController@myPrograms')->name('novartis.programs');
+//        Route::get('/novartis-programs','HomeController@myPrograms')->name('novartis.programs');
 
 //        Route::get('/profile','ProfileController@index')->name('profile');
 //        Route::post('/profile','ProfileController@update')->name('profile.update');
@@ -25,6 +25,9 @@ Route::group(['prefix'=>'/admin'],function (){
             Route::resource('products','ProductController');
 
             Route::resource('companies/{company}/marketing','CompanyUsersController');
+
+            Route::resource('pharmacies','PharmacyController');
+            Route::get('pharmacies/{pharmacy}/destroy','PharmacyController@destroy')->name('pharmacies.destroy');
 
             Route::resource('callcenters','CallCenterController');
             Route::get('callcenters/{callcenter}/destroy','CallCenterController@destroy')->name('callcenters.destroy');
@@ -63,7 +66,26 @@ Route::group(['prefix'=>'/marketing'],function (){
     });
 });
 
-Route::group(['prefix'=>'/call-centers'],function (){
+//pharmacy routes
+
+Route::group(['prefix'=>'/pharmacy'],function (){
+    Route::group(['namespace'=>'Auth'],function (){
+        Route::get('/login','PharmacyController@index')->name('pharmacy.login');
+        Route::post('/login','PharmacyController@login')->name('pharmacy.login');
+        Route::get('/logout','PharmacyController@logout')->name('pharmacy.logout');
+    });
+//
+    Route::group(['middleware'=>['auth:pharmacy']],function (){
+        Route::get('/','HomeController@index')->name('home');
+
+        Route::resource('orders','OrderController');
+        Route::get('orders/foc/activate','OrderController@foc')->name('orders.foc');
+        Route::post('orders/foc/activate','OrderController@postFoc')->name('orders.foc');
+
+    });
+});
+
+Route::group(['prefix'=>'/callcenter'],function (){
     Route::group(['namespace'=>'Auth'],function (){
         Route::get('/login','CallCenterController@index')->name('callcenter.login');
         Route::post('/login','CallCenterController@login')->name('callcenter.login');
@@ -85,8 +107,8 @@ Route::group(['prefix'=>'/call-centers'],function (){
             Route::get('patients/{patient}/destroy','PatientController@destroy')->name('patients.destroy');
             Route::get('patients/check/serial-code','PatientController@checkSerial')->name('patients.check-serial');
 
-            Route::resource('pharmacies','PharmacyController');
-            Route::get('pharmacies/{pharmacy}/destroy','PharmacyController@destroy')->name('pharmacies.destroy');
+//            Route::resource('pharmacies','PharmacyController');
+//            Route::get('pharmacies/{pharmacy}/destroy','PharmacyController@destroy')->name('pharmacies.destroy');
 
             Route::resource('laboratories','LaboratoryController');
             Route::get('laboratories/{laboratory}/destroy','LaboratoryController@destroy')->name('laboratories.destroy');
@@ -129,9 +151,9 @@ Route::group(['prefix'=>'/users'],function (){
 
     Route::group(['middleware'=>['auth:web']],function (){
         Route::get('/','HomeController@index')->name('home');
-        Route::resource('orders','OrderController');
-        Route::get('orders/foc/activate','OrderController@foc')->name('orders.foc');
-        Route::post('orders/foc/activate','OrderController@postFoc')->name('orders.foc');
+//        Route::resource('orders','OrderController');
+//        Route::get('orders/foc/activate','OrderController@foc')->name('orders.foc');
+//        Route::post('orders/foc/activate','OrderController@postFoc')->name('orders.foc');
 
         Route::get('tests','TestController@patientTestsIndex')->name('tests.index');
         Route::post('tests/{test}/upload-result','TestController@uploadPatientResult')->name('patient.upload-test.result');
