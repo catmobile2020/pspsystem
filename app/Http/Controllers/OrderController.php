@@ -15,8 +15,8 @@ class OrderController extends Controller
 
     public function index()
     {
-        $user = auth('web')->user();
-        $rows = Order::where('user_id',$user->id)->latest()->paginate(15);
+        $user = auth('pharmacy')->user();
+        $rows = $user->orders()->latest()->paginate(15);
         return view('pages.order.index',compact('rows'));
     }
 
@@ -41,8 +41,7 @@ class OrderController extends Controller
         $inputs = $request->all();
         $inputs['patient_id']=$patient->id;
         $inputs['batch_id']=$pack->id;
-        $has_free = $patient->patientOrders()->latest('id')->first() ? $patient->patientOrders()->latest('id')->first()->has_free : true;
-        $user = auth('web')->user();
+        $user = auth('pharmacy')->user();
         $order = $user->orders()->create($inputs);
         if ($order)
         {
@@ -52,13 +51,16 @@ class OrderController extends Controller
             $message = "كود العبوة {$request->pack_number}";
             $this->sendSMS($patient->phone,$message);
 
-            if (!$has_free)
+            $patient->increment('buy');
+            $product = $patient->callCenter->product;
+            if ($patient->buy == $product->paid_num)
             {
+                $patient->update(['buy'=>0]);
                 $confirmation_code=rand(000000,999999);
 
                 $freeOrder = Order::create([
                     'serial_number'=>$patient->serial_number,
-                    'comment'=>'FOC',
+                    'comment'=>$product->name,
                     'has_free'=>true,
                     'confirmation_code'=>$confirmation_code,
                     'activated'=>false,
@@ -82,7 +84,7 @@ class OrderController extends Controller
 
     public function postFoc(OrderRequest $request)
     {
-        $user = auth('web')->user();
+        $user = auth('pharmacy')->user();
         $order = Order::where('serial_number',$request->serial_number)->where('confirmation_code',$request->code)->first();
         if (!$order)
         {

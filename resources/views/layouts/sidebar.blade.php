@@ -143,17 +143,7 @@
         @endif
 
         @if (auth('web')->check())
-
-            @if (auth('web')->user()->type == 2)
-            <li class="has-sub {{Route::is('orders.*') ? 'active' : ''}}">
-                <a href=""><i class="icon-layout"></i><span class="title">Orders</span></a>
-                <ul class="nav collapse">
-                    <li class="{{Route::is('orders.create') ? 'active' : ''}}"><a href="{{route('orders.create')}}"><span class="title">Add New</span></a></li>
-                    <li class="{{Route::is('orders.index') ? 'active' : ''}}"><a href="{{route('orders.index')}}"><span class="title">Show All</span></a></li>
-                    <li class="{{Route::is('orders.foc') ? 'active' : ''}}"><a href="{{route('orders.foc')}}"><span class="title">FOC</span></a></li>
-                </ul>
-            </li>
-            @endif
+            
             @if (auth('web')->user()->type == 3)
                 <li class="has-sub {{Route::is('tests.*') ? 'active' : ''}}">
                     <a href=""><i class="icon-layout"></i><span class="title">Tests</span></a>
@@ -187,6 +177,18 @@
                 </li>
             @endif
 
+        @endif
+
+
+        @if (auth('pharmacy')->check())
+            <li class="has-sub {{Route::is('orders.*') ? 'active' : ''}}">
+                <a href=""><i class="icon-layout"></i><span class="title">Orders</span></a>
+                <ul class="nav collapse">
+                    <li class="{{Route::is('orders.create') ? 'active' : ''}}"><a href="{{route('orders.create')}}"><span class="title">Add New</span></a></li>
+                    <li class="{{Route::is('orders.index') ? 'active' : ''}}"><a href="{{route('orders.index')}}"><span class="title">Show All</span></a></li>
+                    <li class="{{Route::is('orders.foc') ? 'active' : ''}}"><a href="{{route('orders.foc')}}"><span class="title">FOC</span></a></li>
+                </ul>
+            </li>
         @endif
 
         <li>

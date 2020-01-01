@@ -55,19 +55,19 @@
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label>type</label>
-                                    <select name="type" class="form-control">
-                                        <option value="1" {{$marketing->type == 1 ? 'selected' : ''}}>Admin</option>
+                                    <select name="type" class="form-control changeType">
                                         <option value="2" {{$marketing->type == 2 ? 'selected' : ''}}>User</option>
+                                        <option value="1" {{$marketing->type == 1 ? 'selected' : ''}}>Admin</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-3 {{$marketing->type == 1 ? 'sr-only' : ''}} " id="typeProductType">
                                 <div class="form-group">
                                     <label for="title">Product</label>
                                     <select name="product_id" class="form-control">
                                         <option selected value>Select Product</option>
                                         @foreach($products as $product)
-                                            <option value="{{$product->id}}" {{$product->product_id == $product->id ? 'selected' : ''}}>{{$product->name}}</option>
+                                            <option value="{{$product->id}}" {{$marketing->product_id == $product->id ? 'selected' : ''}}>{{$product->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -94,4 +94,19 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+<script>
+    $('.changeType').change(function () {
+        let value=$(this).val();
+        if(value == 1)
+        {
+            $('#typeProductType').addClass('sr-only');
+        }else
+        {
+            $('#typeProductType').removeClass('sr-only');
+        }
+    });
+</script>
 @endsection

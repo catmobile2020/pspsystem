@@ -78,6 +78,10 @@ Route::group(['prefix'=>'/pharmacy'],function (){
     Route::group(['middleware'=>['auth:pharmacy']],function (){
         Route::get('/','HomeController@index')->name('home');
 
+        Route::resource('orders','OrderController');
+        Route::get('orders/foc/activate','OrderController@foc')->name('orders.foc');
+        Route::post('orders/foc/activate','OrderController@postFoc')->name('orders.foc');
+
     });
 });
 
@@ -147,9 +151,9 @@ Route::group(['prefix'=>'/users'],function (){
 
     Route::group(['middleware'=>['auth:web']],function (){
         Route::get('/','HomeController@index')->name('home');
-        Route::resource('orders','OrderController');
-        Route::get('orders/foc/activate','OrderController@foc')->name('orders.foc');
-        Route::post('orders/foc/activate','OrderController@postFoc')->name('orders.foc');
+//        Route::resource('orders','OrderController');
+//        Route::get('orders/foc/activate','OrderController@foc')->name('orders.foc');
+//        Route::post('orders/foc/activate','OrderController@postFoc')->name('orders.foc');
 
         Route::get('tests','TestController@patientTestsIndex')->name('tests.index');
         Route::post('tests/{test}/upload-result','TestController@uploadPatientResult')->name('patient.upload-test.result');

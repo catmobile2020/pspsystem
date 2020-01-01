@@ -16,7 +16,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'username', 'email','national_id', 'age', 'sex','address', 'phone', 'phone2','diagnosis', 'type',
-        'serial_number', 'specialty', 'preferred_distributor','password','doctor_id','doctor_code', 'governorate_id', 'call_center_id',
+        'serial_number', 'specialty', 'preferred_distributor','password','doctor_id','doctor_code','buy', 'governorate_id', 'call_center_id',
     ];
 
     /**
@@ -65,7 +65,7 @@ class User extends Authenticatable
 
     public function callCenter()
     {
-        return $this->belongsTo('App\CallCenter');
+        return $this->belongsTo('App\CallCenter')->withDefault();
     }
 
     public function orders()

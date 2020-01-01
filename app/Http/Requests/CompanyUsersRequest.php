@@ -26,8 +26,11 @@ class CompanyUsersRequest extends FormRequest
         $roles = [
             'name'=>'required',
             'type'=>'required',
-            'product_id'=>'required|exists:products,id',
         ];
+        if ($this->request->get('type') != 1)
+        {
+            $roles['product_id'] = 'required|exists:products,id';
+        }
 
         if ($this->routeIs('marketing.update'))
         {
