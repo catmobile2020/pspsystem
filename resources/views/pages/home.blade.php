@@ -80,6 +80,7 @@
             }
             .flexgrid .container > * {
                 width: calc( 25% - 0.75rem );
+                min-width: 200px;
                 margin-left: 0.5rem;
                 margin-right: 0.5rem;
             }
@@ -110,22 +111,24 @@
 
         .flexgrid .title {
             font-family: 'Baloo Tamma', cursive;
-            font-size: 300%;
-            padding: 2rem 1rem;
+            font-size: 22px;
+            padding: 2rem 0 0 0;
+        }
+        .help-block{
+            color: #f3f3f3;
         }
         .flexgrid .thing {
             color: #FEFEFE;
-            font-size: 200%;
             padding: 2rem;
-            display: flex;
+            display: block;
             align-items: center;
             justify-content: center;
             min-height: 150px;
             margin-bottom: 1rem;
             cursor: pointer;
             box-shadow: 0 2.5px 5px rgba(25, 25, 25, 0.1);
-            background: #1dd2af;
-            background: linear-gradient(to bottom, #1dd2af, #17a689);
+            background: #107b11;
+            background: linear-gradient(to bottom, #107b11, #107b11);
         }
         .flexgrid .thing:hover {
             -webkit-animation-name: shake;
@@ -135,25 +138,33 @@
             -webkit-animation-iteration-count: infinite;
             animation-iteration-count: infinite;
         }
-        .flexgrid .thing:nth-child(1), .flexgrid .thing:nth-child(4), .flexgrid .thing:nth-child(7), .flexgrid .thing:nth-child(10) {
-            background: #fed26a;
-            background: linear-gradient(to bottom, #fed26a, #fec238);
+        .flexgrid .thing:nth-child(1), .flexgrid .thing:nth-child(8), .flexgrid .thing:nth-child(10) {
+            background: #d34726;
+            background: linear-gradient(to bottom, #d34726, #d34726);
         }
-        .flexgrid .thing:nth-child(1):hover, .flexgrid .thing:nth-child(4):hover, .flexgrid .thing:nth-child(7):hover, .flexgrid .thing:nth-child(10):hover {
+        .flexgrid .thing:nth-child(1):hover, .flexgrid .thing:nth-child(4   ):hover, .flexgrid .thing:nth-child(7):hover, .flexgrid .thing:nth-child(10):hover {
             -webkit-animation-name: bounce;
             animation-name: bounce;
         }
-        .flexgrid .thing:nth-child(2), .flexgrid .thing:nth-child(5), .flexgrid .thing:nth-child(9), .flexgrid .thing:nth-child(14) {
-            background: #7ad0ff;
-            background: linear-gradient(to bottom, #7ad0ff, #47beff);
+        .flexgrid .thing:nth-child(2), .flexgrid .thing:nth-child(5), .flexgrid .thing:nth-child(10), .flexgrid .thing:nth-child(14) {
+            background: #298dcb;
+            background: linear-gradient(to bottom, #298dcb, #298dcb);
+        }
+        .flexgrid .thing:nth-child(8), .flexgrid .thing:nth-child(10) {
+            background: #641790;
+            background: linear-gradient(to bottom, #641790, #641790);
+        }
+        .flexgrid .thing:nth-child(3), .flexgrid .thing:nth-child(6) {
+            background: #b59b31;
+            background: linear-gradient(to bottom, #b59b31, #b59b31);
         }
         .flexgrid .thing:nth-child(2):hover, .flexgrid .thing:nth-child(5):hover, .flexgrid .thing:nth-child(9):hover, .flexgrid .thing:nth-child(14):hover {
             -webkit-animation-name: swing;
             animation-name: swing;
         }
-        .flexgrid .thing:nth-child(3), .flexgrid .thing:nth-child(6), .flexgrid .thing:nth-child(12) {
-            background: #df6974;
-            background: linear-gradient(to bottom, #df6974, #d73f4e);
+        .flexgrid .thing:nth-child(4), .flexgrid .thing:nth-child(11) {
+            background: #d03438;
+            background: linear-gradient(to bottom, #d03438, #d03438);
         }
         .flexgrid .thing:nth-child(3):hover, .flexgrid .thing:nth-child(6):hover, .flexgrid .thing:nth-child(12):hover {
             -webkit-animation-name: tada;
@@ -332,26 +343,68 @@
                 transform: scale3d(1, 1, 1);
             }
         }
+
     </style>
     @endsection
 
 @section('content')
     <div class="flexgrid">
         <div class='container'>
-            <div class='thing'>Programs</div>
-            <div class='thing'>Flexbox 4evr!</div>
-            <div class='thing'><span class="emoji">🙀</span></div>
-            <div class='thing'>Easy!</div>
-            <div class='thing'><span class="emoji">👍</span></div>
-            <div class='thing'>1 of ur 5 a day!<span class="emoji">🍓</span></div>
-            <div class='thing'><span class="emoji">🚀</span></div>
-            <div class='thing'>Super good!</div>
-            <div class='thing'>Gives You Health!<span class="emoji">💕</span></div>
-            <div class='thing'><span class="emoji">🔥</span></div>
-            <div class='thing'>Delicious!<span class="emoji">🌭</span></div>
-            <div class='thing'>Win!!<span class="emoji">🏅</span></div>
-            <div class='thing'>Life Changing!</div>
-            <div class='thing'>U won't believe wot hapened next...</div>
+            <div class='thing text-center'>
+                <img src="{{asset('assets/icons/dashboard.png')}}" style="height: 50px;">
+                <p class="title">Dashboard</p>
+                <p class="help-block">Menu items with all data</p>
+            </div>
+            <div class='thing text-center'>
+                <img src="{{asset('assets/icons/programs.png')}}" style="height: 50px;">
+                <p class="title">Programs</p>
+                <p class="help-block">Menu items with all data</p>
+            </div>
+            <div class='thing text-center'>
+                <img src="{{asset('assets/icons/company.png')}}" style="height: 50px;">
+                <p class="title">Companies</p>
+                <p class="help-block">Menu items with all data</p>
+            </div>
+            <div class='thing text-center'>
+                <img src="{{asset('assets/icons/product.png')}}" style="height: 50px;">
+                <p class="title">Products</p>
+                <p class="help-block">Menu items with all data</p>
+            </div>
+            <div class='thing text-center'>
+                <img src="{{asset('assets/icons/support.png')}}" style="height: 50px;">
+                <p class="title">Call centers</p>
+                <p class="help-block">Menu items with all data</p>
+            </div>
+            <div class='thing text-center'>
+                <img src="{{asset('assets/icons/pharmacy.png')}}" style="height: 50px;">
+                <p class="title">Pharmacy</p>
+                <p class="help-block">Menu items with all data</p>
+            </div>
+            <div class='thing text-center'>
+                <img src="{{asset('assets/icons/doctor.png')}}" style="height: 50px;">
+                <p class="title">Doctors</p>
+                <p class="help-block">Menu items with all data</p>
+            </div>
+            <div class='thing text-center'>
+                <img src="{{asset('assets/icons/patients.png')}}" style="height: 50px;">
+                <p class="title">Patients</p>
+                <p class="help-block">Menu items with all data</p>
+            </div>
+            <div class='thing text-center'>
+                <img src="{{asset('assets/icons/orders.png')}}" style="height: 50px;">
+                <p class="title">Orders</p>
+                <p class="help-block">Menu items with all data</p>
+            </div>
+            <div class='thing text-center'>
+                <img src="{{asset('assets/icons/admin.png')}}" style="height: 50px;">
+                <p class="title">Company Admin</p>
+                <p class="help-block">Menu items with all data</p>
+            </div>
+            <div class='thing text-center'>
+                <img src="{{asset('assets/icons/marketing.png')}}" style="height: 50px;">
+                <p class="title">Marketing account</p>
+                <p class="help-block">Menu items with all data</p>
+            </div>
         </div>
     </div>
 

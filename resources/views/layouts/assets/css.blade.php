@@ -33,5 +33,12 @@
 <script src="{{asset('assets/js/html5shiv.min.js')}}"></script>
 <script src="{{asset('assets/js/respond.min.js')}}"></script>
 <![endif]-->
+<style>
+    .page-sidebar {
+        width: 365px;
+        background-image: linear-gradient(to top, #000000, #412b29, #7c5741, #ab8e57, #c4cf79);
+        /*background-image: linear-gradient(to top, #292829, #4c3741, #75464c, #9a594a, #b27440, #b98736, #b79d2d, #acb52c, #9fc229, #8dcf2e, #72dc39, #43e94b);*/
+    }
+</style>
 
 @yield('css')
