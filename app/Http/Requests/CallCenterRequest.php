@@ -25,13 +25,12 @@ class CallCenterRequest extends FormRequest
     {
         $roles = [
             'name'=>'required',
-            'email'=>'required|email',
             'product_id'=>'required|exists:products,id',
         ];
 
         if ($this->routeIs('callcenters.update'))
         {
-            $roles['email'] ='required|unique:call_centers,email,'.$this->callcenter->id;
+            $roles['email'] ='required|email|unique:call_centers,email,'.$this->callcenter->id;
             $roles['username'] ='required|unique:call_centers,username,'.$this->callcenter->id;
             if ($this->has('password') and $this->get('password') !== null)
             {
@@ -39,7 +38,7 @@ class CallCenterRequest extends FormRequest
             }
         }else
         {
-            $roles['email'] ='required|unique:call_centers,email';
+            $roles['email'] ='required|email|unique:call_centers,email';
             $roles['username'] ='required|unique:call_centers,username';
             $roles['password'] ='required|confirmed|min:6';
         }

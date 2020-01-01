@@ -76,6 +76,7 @@ class DoctorController extends Controller
 
     public function destroy(User $doctor)
     {
+        $doctor->cards()->delete();
         $doctor->delete();
         return redirect()->route('doctors.index')->with('message','Done Successfully');
     }

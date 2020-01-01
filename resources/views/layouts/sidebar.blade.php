@@ -44,6 +44,13 @@
                     <li class="{{Route::is('products.index') ? 'active' : ''}}"><a href="{{route('products.index')}}"><span class="title">Show All</span></a></li>
                 </ul>
             </li>
+            <li class="has-sub {{Route::is('pharmacies.*') ? 'active' : ''}}">
+                <a href=""><i class="icon-progress-0"></i><span class="title">Pharmacy</span></a>
+                <ul class="nav collapse">
+                    <li class="{{Route::is('pharmacies.create') ? 'active' : ''}}"><a href="{{route('pharmacies.create')}}"><span class="title">Add New</span></a></li>
+                    <li class="{{Route::is('pharmacies.index') ? 'active' : ''}}"><a href="{{route('pharmacies.index')}}"><span class="title">Show All</span></a></li>
+                </ul>
+            </li>
             <li class="has-sub {{Route::is('users.*') ? 'active' : ''}}">
                 <a href=""><i class="icon-layout"></i><span class="title">Call centers</span></a>
                 <ul class="nav collapse">
@@ -183,13 +190,14 @@
         @endif
 
         <li>
-        @if (auth('admin')->check())
-            <a href="{{route('admin.logout')}}"><i class="icon-logout"></i>Logout</a>
-        @elseif(auth('callcenter')->check())
-            <a href="{{route('callcenter.logout')}}"><i class="icon-logout"></i>Logout</a>
-        @else
-            <a href="{{route('user.logout')}}"><i class="icon-logout"></i>Logout</a>
-        @endif
+{{--        @if (auth('admin')->check())--}}
+{{--            <a href="{{route('admin.logout')}}"><i class="icon-logout"></i>Logout</a>--}}
+{{--        @elseif(auth('callcenter')->check())--}}
+{{--            <a href="{{route('callcenter.logout')}}"><i class="icon-logout"></i>Logout</a>--}}
+{{--        @else--}}
+{{--            <a href="{{route('user.logout')}}"><i class="icon-logout"></i>Logout</a>--}}
+{{--        @endif--}}
+            <a href="{{route(explode('/',request()->route()->uri())[0].'.logout')}}"><i class="icon-logout"></i>Logout</a>
         </li>
     </ul>
     <!-- /main navigation -->

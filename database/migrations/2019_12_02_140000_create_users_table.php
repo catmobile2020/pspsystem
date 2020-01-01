@@ -29,6 +29,8 @@ class CreateUsersTable extends Migration
             $table->string('serial_number')->nullable();
             $table->string('specialty')->nullable();
             $table->string('preferred_distributor')->nullable();
+            $table->integer('doctor_code')->nullable();
+            $table->integer('buy')->nullable();
             $table->string('password');
             $table->unsignedInteger('doctor_id')->nullable();
 

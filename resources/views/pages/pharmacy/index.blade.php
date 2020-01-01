@@ -37,7 +37,6 @@
                                     <th>name</th>
                                     <th>username</th>
                                     <th>email</th>
-                                    <th>call center</th>
                                     <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
@@ -49,7 +48,6 @@
                                         <td>{{$row->name}}</td>
                                         <td>{{$row->username}}</td>
                                         <td>{{$row->email}}</td>
-                                        <td>{{$row->callCenter->name}}</td>
                                         <td>{{$row->created_at->format('Y-m-d')}}</td>
                                         <td class="size-80">
                                             <a href="{{route('pharmacies.edit',$row->id)}}">Edit</a>
@@ -72,7 +70,6 @@
                                     <th>name</th>
                                     <th>username</th>
                                     <th>email</th>
-                                    <th>call center</th>
                                     <th>Created At</th>
                                     <th>Action</th>
                                 </tr>

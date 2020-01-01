@@ -6,14 +6,14 @@
         <ul class="user-info pull-left">
             <li class="profile-info dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
-                    @if (auth('admin')->check())
-                        {{auth('admin')->user()->name}}
-                    @elseif(auth('callcenter')->check())
-                        {{auth('callcenter')->user()->name}}
-                    @else
-                        {{auth('web')->user()->name}}
-                    @endif
-
+{{--                    @if (auth('admin')->check())--}}
+{{--                        {{auth('admin')->user()->name}}--}}
+{{--                    @elseif(auth('callcenter')->check())--}}
+{{--                        {{auth('callcenter')->user()->name}}--}}
+{{--                    @else--}}
+{{--                        {{auth('web')->user()->name}}--}}
+{{--                    @endif--}}
+                        {{auth(explode('/',request()->route()->uri())[0])->user()->name}}
                     <span class="caret"></span>
                 </a>
             </li>
