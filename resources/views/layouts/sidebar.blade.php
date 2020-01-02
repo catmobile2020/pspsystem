@@ -4,7 +4,7 @@
     <!-- Site header  -->
     <header class="site-header">
         <div class="site-logo">
-            <a href="#">
+            <a href="/{{explode('/',request()->route()->uri())[0]}}">
                 <img src="{{asset('assets/images/logo.png')}}" width="320">
             </a>
         </div>

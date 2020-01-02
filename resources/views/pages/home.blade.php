@@ -345,66 +345,101 @@
         }
 
     </style>
-    @endsection
+@endsection
 
 @section('content')
     <div class="flexgrid">
         <div class='container'>
             <div class='thing text-center'>
-                <img src="{{asset('assets/icons/dashboard.png')}}" style="height: 50px;">
-                <p class="title">Dashboard</p>
-                <p class="help-block">Menu items with all data</p>
+                <a href="/{{explode('/',request()->route()->uri())[0]}}">
+                    <img src="{{asset('assets/icons/dashboard.png')}}" style="height: 50px;">
+                    <p class="title">Dashboard</p>
+                    <p class="help-block">Menu items with all data</p>
+                </a>
+            </div>
+            @if (auth('admin')->check())
+            <div class='thing text-center'>
+                <a href="{{route('programs.index')}}">
+                    <img src="{{asset('assets/icons/programs.png')}}" style="height: 50px;">
+                    <p class="title">Programs</p>
+                    <p class="help-block">Menu items with all data</p>
+                </a>
             </div>
             <div class='thing text-center'>
-                <img src="{{asset('assets/icons/programs.png')}}" style="height: 50px;">
-                <p class="title">Programs</p>
-                <p class="help-block">Menu items with all data</p>
+                <a href="{{route('companies.index')}}">
+                    <img src="{{asset('assets/icons/company.png')}}" style="height: 50px;">
+                    <p class="title">Companies</p>
+                    <p class="help-block">Menu items with all data</p>
+                </a>
             </div>
             <div class='thing text-center'>
-                <img src="{{asset('assets/icons/company.png')}}" style="height: 50px;">
-                <p class="title">Companies</p>
-                <p class="help-block">Menu items with all data</p>
+                <a href="{{route('products.index')}}">
+                    <img src="{{asset('assets/icons/product.png')}}" style="height: 50px;">
+                    <p class="title">Products</p>
+                    <p class="help-block">Menu items with all data</p>
+                </a>
             </div>
             <div class='thing text-center'>
-                <img src="{{asset('assets/icons/product.png')}}" style="height: 50px;">
-                <p class="title">Products</p>
-                <p class="help-block">Menu items with all data</p>
+                <a href="{{route('callcenters.index')}}">
+                    <img src="{{asset('assets/icons/support.png')}}" style="height: 50px;">
+                    <p class="title">Call centers</p>
+                    <p class="help-block">Menu items with all data</p>
+                </a>
             </div>
             <div class='thing text-center'>
-                <img src="{{asset('assets/icons/support.png')}}" style="height: 50px;">
-                <p class="title">Call centers</p>
-                <p class="help-block">Menu items with all data</p>
+                <a href="{{route('pharmacies.index')}}">
+                    <img src="{{asset('assets/icons/pharmacy.png')}}" style="height: 50px;">
+                    <p class="title">Pharmacy</p>
+                    <p class="help-block">Menu items with all data</p>
+                </a>
+            </div>
+            @endif
+            @if (auth('callcenter')->check())
+            <div class='thing text-center'>
+                <a href="{{route('doctors.index')}}">
+                    <img src="{{asset('assets/icons/doctor.png')}}" style="height: 50px;">
+                    <p class="title">Doctors</p>
+                    <p class="help-block">Menu items with all data</p>
+                </a>
             </div>
             <div class='thing text-center'>
-                <img src="{{asset('assets/icons/pharmacy.png')}}" style="height: 50px;">
-                <p class="title">Pharmacy</p>
-                <p class="help-block">Menu items with all data</p>
+                <a href="{{route('patients.index')}}">
+                    <img src="{{asset('assets/icons/patients.png')}}" style="height: 50px;">
+                    <p class="title">Patients</p>
+                    <p class="help-block">Menu items with all data</p>
+                </a>
             </div>
+            @endif
+            @if (auth('pharmacy')->check())
             <div class='thing text-center'>
-                <img src="{{asset('assets/icons/doctor.png')}}" style="height: 50px;">
-                <p class="title">Doctors</p>
-                <p class="help-block">Menu items with all data</p>
+                <a href="{{route('orders.index')}}">
+                    <img src="{{asset('assets/icons/orders.png')}}" style="height: 50px;">
+                    <p class="title">Orders</p>
+                    <p class="help-block">Menu items with all data</p>
+                </a>
             </div>
+            @endif
             <div class='thing text-center'>
-                <img src="{{asset('assets/icons/patients.png')}}" style="height: 50px;">
-                <p class="title">Patients</p>
-                <p class="help-block">Menu items with all data</p>
+                <a href="{{route(explode('/',request()->route()->uri())[0].'.logout')}}">
+                    <img src="{{asset('assets/icons/admin.png')}}" style="height: 50px;">
+                    <p class="title">Logout</p>
+                    <p class="help-block">Logout</p>
+                </a>
             </div>
-            <div class='thing text-center'>
-                <img src="{{asset('assets/icons/orders.png')}}" style="height: 50px;">
-                <p class="title">Orders</p>
-                <p class="help-block">Menu items with all data</p>
-            </div>
-            <div class='thing text-center'>
-                <img src="{{asset('assets/icons/admin.png')}}" style="height: 50px;">
-                <p class="title">Company Admin</p>
-                <p class="help-block">Menu items with all data</p>
-            </div>
-            <div class='thing text-center'>
-                <img src="{{asset('assets/icons/marketing.png')}}" style="height: 50px;">
-                <p class="title">Marketing account</p>
-                <p class="help-block">Menu items with all data</p>
-            </div>
+{{--            <div class='thing text-center'>--}}
+{{--                <a href="{{route('companies.index')}}">--}}
+{{--                    <img src="{{asset('assets/icons/admin.png')}}" style="height: 50px;">--}}
+{{--                    <p class="title">Company Admin</p>--}}
+{{--                    <p class="help-block">Menu items with all data</p>--}}
+{{--                </a>--}}
+{{--            </div>--}}
+{{--            <div class='thing text-center'>--}}
+{{--                <a href="{{route('companies.index')}}">--}}
+{{--                    <img src="{{asset('assets/icons/marketing.png')}}" style="height: 50px;">--}}
+{{--                    <p class="title">Marketing account</p>--}}
+{{--                    <p class="help-block">Menu items with all data</p>--}}
+{{--                </a>--}}
+{{--            </div>--}}
         </div>
     </div>
 
@@ -443,4 +478,4 @@
   `;
         };
     </script>
-    @endsection
+@endsection

@@ -14,11 +14,8 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
-                        <ul class="panel-tool-options">
-                            <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
-                            <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
-                            <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
-                        </ul>
+                        <a href="{{route('orders.create')}}" class="btn btn-success">New Order</a>
+                        <a href="{{route('orders.foc')}}" class="btn btn-success">FOC</a>
                     </div>
                     <div class="panel-body">
                         @if (session()->has('message'))

@@ -17,11 +17,6 @@
                         <h3 class="panel-title">
                             <a class="btn btn-success btn-rounded" href="{{route('patient.tests.create',$patient->id)}}">Add Test</a>
                         </h3>
-                        <ul class="panel-tool-options">
-                            <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
-                            <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
-                            <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
-                        </ul>
                     </div>
                     <div class="panel-body">
                         @if (session()->has('message'))
