@@ -11,7 +11,10 @@ body {
 	color: #505050;
 }
 body.login-page {
-	background-color: #f3f3f3;
+	background-color: #6EBBB5;
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 body.page-error {
 	background-color: #f5f5f5;
@@ -238,7 +241,7 @@ a.text-purple:hover, a.text-purple:focus {
 	padding-top: 60px;
 }
 .main-container {
-	background-color: #efefef;
+	background-color: #fff;
 	padding: 0 15px;
 	position: relative;
 	display: table-cell;
@@ -247,7 +250,7 @@ a.text-purple:hover, a.text-purple:focus {
 }
 .main-header {
 	padding: 10px;
-	border-bottom: solid 1px #e3e1e1;
+	/*border-bottom: solid 1px #e3e1e1;*/
 }
 .header-secondary {
 	padding: 20px 10px 10px;
@@ -270,7 +273,7 @@ a.text-purple:hover, a.text-purple:focus {
 /* Sidebar
    ========================================================================== */
 .page-sidebar {
-	background-color: #ffffff;
+	background-color: #6EBBB5 !important;
 	color: #b4b5b8;
 	display: table-cell;
 	height: 100%;
@@ -1586,7 +1589,7 @@ i.icon-dot-3.icon-more {
 }
 .panel-default > .panel-heading {
 	color: #ebebeb;
-	background-color: #0f0f0f;
+	background-color: #007a6f;
 	border-color: #ddd;
 }
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
@@ -1749,7 +1752,7 @@ i.icon-dot-3.icon-more {
 	line-height: 1;
 }
 .pagination > li > a, .pagination > li > span, .pager > li > a, .pager > li > span {
-	color: #a4c839;
+	color: #6EBBB5;
 }
 .pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
 	z-index: 3;
@@ -1758,8 +1761,8 @@ i.icon-dot-3.icon-more {
 	border-color: #dddddd;
 }
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
-	background-color: #a4c839;
-	border-color: #c9d52b;
+	background-color: #6EBBB5 ;
+	border-color: #007a6f;
 	color: #FFFFFF;
 	z-index: 5;
 }
@@ -2443,38 +2446,38 @@ label {
 .btn-primary {
 	color: #fff;
 	background-color: #000000;
-	border-color: #a4c839;
+	border-color: #6EBBB5;
 }
 .btn-primary:focus, .btn-primary.focus {
 	color: #f3f3f3;
-	background-color: #a4c839;
+	background-color: #6EBBB5;
 	border-color: #000000;
 }
 .btn-primary:hover {
 	color: #f3f3f3;
-	background-color: #a4c839;
+	background-color: #6EBBB5;
 	border-color: #000000;
 }
 .btn-primary:active, .btn-primary.active, .open > .btn-primary.dropdown-toggle {
-	color: #64639C;
-	background-color: #F4772A;
-	border-color: #EB0A8D;
+	color: #fff;
+	background-color: #007a6f;
+	border-color: #000;
 }
 .btn-primary:active:hover, .btn-primary:active:focus, .btn-primary:active.focus, .btn-primary.active:hover, .btn-primary.active:focus, .btn-primary.active.focus, .open > .btn-primary.dropdown-toggle:hover, .open > .btn-primary.dropdown-toggle:focus, .open > .btn-primary.dropdown-toggle.focus {
-	color: #64639C;
-	background-color: #F4772A;
-	border-color: #EB0A8D;
+    color: #fff;
+    background-color: #007a6f;
+    border-color: #000;
 }
 .btn-primary:active, .btn-primary.active, .open > .btn-primary.dropdown-toggle {
 	background-image: none;
 }
 .btn-primary.disabled:hover, .btn-primary.disabled:focus, .btn-primary.disabled.focus, .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary:hover, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary.focus {
-	color: #64639C;
-	background-color: #F4772A;
-	border-color: #EB0A8D;
+    color: #fff;
+    background-color: #007a6f;
+    border-color: #000;
 }
 .btn-primary .badge {
-	color: #EB0A8D;
+	color: #007a6f;
 	background-color: #fff;
 }
 .btn-success {
@@ -3363,21 +3366,22 @@ ul.mail-attachment li {
  * Login Page
  */
 .login-container {
-	padding: 30px 0;
+	/*padding: 30px 0;*/
 	position: relative;
 }
 .login-branding {
 	margin: auto;
-	padding: 30px 0;
+	padding: 70px 0 100px 0;
 	text-align: center;
 	width: 420px;
 	max-width: 94%;
 }
 .login-content {
 	width: 420px;
-	margin: auto;
+    height: 100vh;
+	/*margin: auto;*/
 	padding: 30px 30px 15px;
-	background-color: #FFFFFF;
+	background-color: #999;
 	-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 	-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
@@ -3387,7 +3391,7 @@ ul.mail-attachment li {
 	border-radius: 3px;
 	font-size: 16px;
 	max-width: 94%;
-	border-bottom: #a4c839 3px solid;
+	border-bottom: #007a6f 3px solid;
 }
 .login-avatar {
 	text-align: center;
@@ -3403,7 +3407,7 @@ ul.mail-attachment li {
 .login-content .form-control {
 	border: 0 none;
 	border-bottom: solid 2px #ccc;
-	padding: 8px 0;
+	padding: 8px 16px;
 	font-size: 16px;
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;

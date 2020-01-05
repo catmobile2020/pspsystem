@@ -113,6 +113,7 @@
             font-family: 'Baloo Tamma', cursive;
             font-size: 22px;
             padding: 2rem 0 0 0;
+            color: #fff !important;
         }
         .help-block{
             color: #f3f3f3;
