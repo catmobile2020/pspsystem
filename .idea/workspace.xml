@@ -3,22 +3,44 @@
   <component name="ChangeListManager">
     <list default="true" id="61e52b0f-1de5-4c4b-97a6-bccdeb0fd22c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/callcenter/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/callcenter/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/callcenter/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/callcenter/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/company/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/company/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/company/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/company/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/company/user/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/company/user/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/company/user/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/company/user/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/doctor/cards.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/doctor/cards.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/doctor/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/doctor/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/doctor/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/doctor/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/doctor/patients.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/doctor/patients.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/examination/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/examination/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/examination/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/examination/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/examination/patients.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/examination/patients.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/eye/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/eye/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/eye/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/eye/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/hospital/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/hospital/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/hospital/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/hospital/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/laboratory/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/laboratory/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/laboratory/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/laboratory/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/order/foc.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/order/foc.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/order/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/order/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/order/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/order/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/patient/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/patient/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/patient/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/patient/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/pharmacy/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/pharmacy/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/pharmacy/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/pharmacy/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/product/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/product/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/product/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/product/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/program/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/program/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/program/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/program/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/test/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/test/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/test/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/test/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/test/patients.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/test/patients.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/voucher/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/voucher/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/voucher/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/voucher/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/voucher/my-vouchers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/voucher/my-vouchers.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/voucher/search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/voucher/search.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -147,7 +169,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/pages/auth" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -203,6 +225,7 @@
       <workItem from="1577699838950" duration="7007000" />
       <workItem from="1577955479620" duration="143000" />
       <workItem from="1577957824763" duration="3248000" />
+      <workItem from="1578235345219" duration="1678000" />
     </task>
     <servers />
   </component>

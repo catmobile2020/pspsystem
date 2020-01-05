@@ -13,11 +13,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
-                        <ul class="panel-tool-options">
-                            <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
-                            <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
-                            <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
-                        </ul>
+                        <a class="btn btn-primary btn-rounded" href="/{{explode('/',request()->route()->uri())[0]}}">Home</a>
                     </div>
                     <div class="panel-body">
                         @if ($errors->any())
@@ -173,6 +169,9 @@
                  }
                  $('#statusResult').html(result.message);
                  $('#statusResult').removeClass('sr-only');
+                 setTimeout(function () {
+                     $('#statusResult').addClass('sr-only');
+                 },3000)
              },
              error:function (errors) {
                  console.log(errors);

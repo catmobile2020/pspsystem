@@ -56,21 +56,23 @@ class OrderController extends Controller
             if ($patient->buy == $product->paid_num)
             {
                 $patient->update(['buy'=>0]);
-                $confirmation_code=rand(000000,999999);
-
-                $freeOrder = Order::create([
-                    'serial_number'=>$patient->serial_number,
-                    'comment'=>$product->name,
-                    'has_free'=>true,
-                    'confirmation_code'=>$confirmation_code,
-                    'activated'=>false,
-                    'patient_id'=>$patient->id,
-
-                ]);
-                if ($freeOrder)
+                for ($i=0;$i<$product->free_num;$i++)
                 {
-                    $message = "{$confirmation_code} هذا كود استحقاق العبوة المجانية لبرنامج ايدك فى ايدينا";
-                    $this->sendSMS($patient->phone,$message);
+                    $confirmation_code=rand(000000,999999);
+                    $freeOrder = Order::create([
+                        'serial_number'=>$patient->serial_number,
+                        'comment'=>$product->name,
+                        'has_free'=>true,
+                        'confirmation_code'=>$confirmation_code,
+                        'activated'=>false,
+                        'patient_id'=>$patient->id,
+
+                    ]);
+                    if ($freeOrder)
+                    {
+                        $message = "{$confirmation_code} هذا كود استحقاق العبوة المجانية لبرنامج ايدك فى ايدينا";
+                        $this->sendSMS($patient->phone,$message);
+                    }
                 }
             }
         }
@@ -106,7 +108,7 @@ class OrderController extends Controller
         }
         $order->update([
             'activated'=>true,
-            'user_id'=>$user->id,
+            'pharmacy_id'=>$user->id,
             'batch_id'=>$pack->id,
             'free_serial'=>$free_pack->serial,
             'confirmation_code'=>null

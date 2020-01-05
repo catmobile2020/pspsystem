@@ -14,6 +14,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
+                        <a class="btn btn-primary btn-rounded" href="/{{explode('/',request()->route()->uri())[0]}}">Home</a>
                         <a href="{{route('hospitals.create')}}" class="btn btn-success">Add New</a>
                     </div>
                     <div class="panel-body">

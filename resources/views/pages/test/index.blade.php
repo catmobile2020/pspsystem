@@ -14,6 +14,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
+                        <a class="btn btn-primary btn-rounded" href="/{{explode('/',request()->route()->uri())[0]}}">Home</a>
                         <h3 class="panel-title">
                             <a class="btn btn-success btn-rounded" href="{{route('patient.tests.create',$patient->id)}}">Add Test</a>
                         </h3>
