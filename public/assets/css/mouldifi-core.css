@@ -289,8 +289,12 @@ a.text-purple:hover, a.text-purple:focus {
 	z-index: 101;
 }
 .site-logo {
-	float: left;
-	position: relative;
+    float: left;
+    position: relative;
+    background-color: #fff;
+    padding: 0 40px;
+    border-radius: 12px;
+    margin: 150px 0;
 }
 .page-container.sidebar-collapsed .site-header {
 	padding: 20px;
@@ -302,6 +306,7 @@ a.text-purple:hover, a.text-purple:focus {
 .site-logo a {
 	color: #c8c8c8;
 	display: block;
+    padding: 70px 0 70px 0;
 	font-weight: 700;
 	text-transform: uppercase;
 }
@@ -1589,7 +1594,7 @@ i.icon-dot-3.icon-more {
 }
 .panel-default > .panel-heading {
 	color: #ebebeb;
-	background-color: #007a6f;
+	background-color: #999;
 	border-color: #ddd;
 }
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
@@ -2446,16 +2451,16 @@ label {
 .btn-primary {
 	color: #fff;
 	background-color: #000000;
-	border-color: #6EBBB5;
+	border-color: #007a6f;
 }
 .btn-primary:focus, .btn-primary.focus {
 	color: #f3f3f3;
-	background-color: #6EBBB5;
+	background-color: #007a6f;
 	border-color: #000000;
 }
 .btn-primary:hover {
 	color: #f3f3f3;
-	background-color: #6EBBB5;
+	background-color: #007a6f;
 	border-color: #000000;
 }
 .btn-primary:active, .btn-primary.active, .open > .btn-primary.dropdown-toggle {
@@ -2482,23 +2487,23 @@ label {
 }
 .btn-success {
 	color: #fff;
-	background-color: #029b17;
-	border-color: #028213;
+	background-color: #007a6f;
+	border-color: #000;
 }
 .btn-success:focus, .btn-success.focus {
 	color: #fff;
-	background-color: #016910;
+	background-color: #005549;
 	border-color: #000401;
 }
 .btn-success:hover {
 	color: #fff;
-	background-color: #016910;
-	border-color: #01450a;
+	background-color: #00a094;
+	border-color: #000;
 }
 .btn-success:active, .btn-success.active, .open > .btn-success.dropdown-toggle {
 	color: #fff;
-	background-color: #016910;
-	border-color: #01450a;
+	background-color: #007a6f;
+	border-color: #000;
 }
 .btn-success:active:hover, .btn-success:active:focus, .btn-success:active.focus, .btn-success.active:hover, .btn-success.active:focus, .btn-success.active.focus, .open > .btn-success.dropdown-toggle:hover, .open > .btn-success.dropdown-toggle:focus, .open > .btn-success.dropdown-toggle.focus {
 	color: #fff;
