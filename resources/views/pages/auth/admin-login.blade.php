@@ -48,10 +48,12 @@
 </head>
 <body class="login-page">
 <div class="login-container">
-    <div class="login-branding">
-        <a href="/"><img src="{{asset('assets/images/logo.png')}}" alt="Mouldifi" title="Mouldifi"></a>
-    </div>
+
     <div class="login-content">
+        <div class="login-branding">
+            <a href="/"><img src="{{asset('assets/images/logo.png')}}" alt="Mouldifi" title="Mouldifi"></a>
+        </div>
+        <br>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -62,7 +64,7 @@
             </div>
         @endif
             @if (session()->has('message'))
-                <div class="alert alert-info">
+                <div class="alert alert-danger">
                     <h4>{{session()->get('message')}}</h4>
                 </div>
             @endif

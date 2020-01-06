@@ -48,29 +48,34 @@
 </head>
 <body class="login-page">
 <div class="login-container">
-    <div class="login-branding">
-        <a href="/"><img src="{{asset('assets/images/logo.png')}}" alt="Mouldifi" title="Mouldifi"></a>
-    </div>
-    <div class="login-content">
-        <h2>
-            <a href="admin">Admin</a>
-        </h2>
-        <h2>
-            <a href="marketing">Company Users</a>
-        </h2>
-        <h2>
-            <a href="pharmacy">pharmacy</a>
-        </h2>
-        <h2>
-            <a href="callcenter">Call Center</a>
-        </h2>
-        <h2>
-            <a href="users">user</a>
-        </h2>
 
-        <h2>
-            <a href="marketing/login">Novartis Marketing</a>
-        </h2>
+    <div class="login-content">
+        <div class="login-branding">
+            <a href="/"><img src="{{asset('assets/images/logo.png')}}" alt="Mouldifi" title="Mouldifi"></a>
+        </div>
+        <ul class="list-unstyled">
+            <li class="list-group-item">
+                <a href="admin">Admin</a>
+            </li>
+            <li class="list-group-item">
+                <a href="marketing">Company Users</a>
+            </li>
+            <li class="list-group-item">
+                <a href="pharmacy">pharmacy</a>
+            </li>
+            <li class="list-group-item">
+                <a href="callcenter">Call Center</a>
+            </li>
+            <li class="list-group-item">
+                <a href="users">user</a>
+            </li>
+
+            <li class="list-group-item">
+                <a href="marketing/login">Novartis Marketing</a>
+            </li>
+        </ul>
+
+
         {{--        <h2>--}}
         {{--            <a href="/patients">patient</a>--}}
         {{--        </h2>--}}
