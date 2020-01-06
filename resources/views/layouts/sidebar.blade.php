@@ -8,6 +8,13 @@
                 <img src="{{asset('assets/images/logo.png')}}" width="320">
             </a>
         </div>
+        @isset($single)
+        <div class="site-logo">
+            <div>
+                <img src="{{$single->photo}}" width="320">
+            </div>
+        </div>
+        @endisset
     </header>
     <!-- /site header -->
 

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Batch;
+use App\Company;
 use App\Helpers\UploadImage;
 use App\Http\Requests\OrderRequest;
 use App\Order;
+use App\Product;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -13,16 +15,24 @@ class OrderController extends Controller
 {
     use UploadImage;
 
-    public function index()
+    public function company(Company $single)
+    {
+        return view('pages.order.company',compact('single'));
+    }
+
+
+    public function index(Company $single)
     {
         $user = auth('pharmacy')->user();
-        $rows = $user->orders()->latest()->paginate(15);
+        $products = $single->products()->pluck('id')->toArray();
+        $rows = $user->orders()->whereIn('product_id',$products)->latest()->paginate(15);
         return view('pages.order.index',compact('rows'));
     }
 
-    public function create()
+    public function create(Product $single)
     {
-        return view('pages.order.form');
+
+        return view('pages.order.form',compact('single'));
     }
 
     public function store(OrderRequest $request)
@@ -41,6 +51,7 @@ class OrderController extends Controller
         $inputs = $request->all();
         $inputs['patient_id']=$patient->id;
         $inputs['batch_id']=$pack->id;
+        $inputs['product_id']=$patient->callCenter->product_id;
         $user = auth('pharmacy')->user();
         $order = $user->orders()->create($inputs);
         if ($order)
@@ -66,6 +77,7 @@ class OrderController extends Controller
                         'confirmation_code'=>$confirmation_code,
                         'activated'=>false,
                         'patient_id'=>$patient->id,
+                        'product_id'=>$patient->callCenter->product_id
 
                     ]);
                     if ($freeOrder)

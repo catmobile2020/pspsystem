@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\Program;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('pages.home');
+        $companies = Company::all();
+        return view('pages.home',compact('companies'));
     }
 
     public function myPrograms()

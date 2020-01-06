@@ -77,8 +77,11 @@ Route::group(['prefix'=>'/pharmacy'],function (){
 //
     Route::group(['middleware'=>['auth:pharmacy']],function (){
         Route::get('/','HomeController@index')->name('home');
+        Route::get('/companies/{single}','OrderController@company')->name('single-company');
+        Route::get('/companies/{single}/orders','OrderController@index')->name('orders.index');
 
         Route::resource('orders','OrderController');
+        Route::get('products/{single}/orders','OrderController@create')->name('orders.create');
         Route::get('orders/foc/activate','OrderController@foc')->name('orders.foc');
         Route::post('orders/foc/activate','OrderController@postFoc')->name('orders.foc');
 

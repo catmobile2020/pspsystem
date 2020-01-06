@@ -15,8 +15,6 @@
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
                         <a class="btn btn-primary btn-rounded" href="/{{explode('/',request()->route()->uri())[0]}}">Home</a>
-                        <a href="{{route('orders.create')}}" class="btn btn-success">New Order</a>
-                        <a href="{{route('orders.foc')}}" class="btn btn-success">FOC</a>
                     </div>
                     <div class="panel-body">
                         @if (session()->has('message'))

@@ -38,10 +38,6 @@ class User extends Authenticatable
         return $q->where('type',1);
     }
 
-    public function scopePharmacy($q)
-    {
-        return $q->where('type',2);
-    }
 
     public function scopeLaboratory($q)
     {

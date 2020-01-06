@@ -53,8 +53,13 @@
                                     <input type="file" name="photo" class="form-control" id="photo" />
                                 </div>
                             </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="pack_number">Product Name</label>
+                                    <input type="text" class="form-control"  value="{{$single->name}}" readonly>
+                                </div>
+                            </div>
                             <div class="col-sm-8 col-sm-offset-4">
-                                <a href="{{route('orders.index')}}" class="btn btn-white">Cancel</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>

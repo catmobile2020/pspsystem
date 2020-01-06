@@ -23,6 +23,9 @@ class CreateOrdersTable extends Migration
             $table->string('free_serial')->nullable();
             $table->unsignedInteger('batch_id')->nullable();
             $table->foreign('batch_id')->references('id')->on('batches');
+
+            $table->unsignedInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products');
             $table->unsignedInteger('patient_id')->nullable();
             $table->foreign('patient_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedInteger('pharmacy_id')->nullable();
