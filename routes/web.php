@@ -49,6 +49,8 @@ Route::group(['prefix'=>'/marketing'],function (){
 //
     Route::group(['middleware'=>['auth:marketing']],function (){
         Route::get('/','HomeController@index')->name('home');
+        Route::get('/statistics','StatisticController@index')->name('statistics.index');
+        Route::get('/statistics/{product}','StatisticController@product')->name('statistics.product');
 //        Route::get('/novartis-programs','HomeController@myPrograms')->name('novartis.programs');
 //        Route::get('/statistics','MarketingController@index')->name('marketing.index');
 //        Route::get('/patient-statistics','MarketingController@patientStatistics')->name('marketing.patient-statistics');

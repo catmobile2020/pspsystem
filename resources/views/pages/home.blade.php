@@ -411,13 +411,6 @@
                 </a>
             </div>
             @endif
-            <div class='thing text-center'>
-                <a href="{{route(explode('/',request()->route()->uri())[0].'.logout')}}">
-                    <img src="{{asset('assets/icons/logout.png')}}" style="height: 50px;">
-                    <p class="title">Logout</p>
-                    <p class="help-block">Logout</p>
-                </a>
-            </div>
             @if (auth('pharmacy')->check())
                 @foreach($companies as $company)
                     <div class='thing text-center'>
@@ -429,6 +422,21 @@
                     </div>
                 @endforeach
             @endif
+            @if (auth('marketing')->check())
+                <div class='thing text-center'>
+                    <a href="{{route('statistics.index')}}">
+                        <img src="{{asset('assets/icons/statistics.png')}}" style="height: 50px;">
+                        <p class="title">Statistics</p>
+                    </a>
+                </div>
+            @endif
+            <div class='thing text-center'>
+                <a href="{{route(explode('/',request()->route()->uri())[0].'.logout')}}">
+                    <img src="{{asset('assets/icons/logout.png')}}" style="height: 50px;">
+                    <p class="title">Logout</p>
+                    <p class="help-block">Logout</p>
+                </a>
+            </div>
 {{--            <div class='thing text-center'>--}}
 {{--                <a href="{{route('companies.index')}}">--}}
 {{--                    <img src="{{asset('assets/icons/admin.png')}}" style="height: 50px;">--}}

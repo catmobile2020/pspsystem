@@ -41,6 +41,6 @@ class CompanyUsersController extends Controller
     {
         auth()->guard('marketing')->logout();
         request()->session()->invalidate();
-        return redirect()->route('user.login');
+        return redirect()->route('marketing.login');
     }
 }

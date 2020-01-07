@@ -28,7 +28,13 @@
     <div class="main-container" id="app">
 
         @include('layouts.header')
-
+        @if (auth('marketing')->check())
+            <div class="site-logo">
+                <div>
+                    <img src="{{auth('marketing')->user()->company->photo}}" height="150">
+                </div>
+            </div>
+        @endif
         <!-- Main content -->
         @yield('content')
         <!-- /main content -->

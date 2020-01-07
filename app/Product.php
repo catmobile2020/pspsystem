@@ -44,4 +44,9 @@ class Product extends Model
     {
         return $this->hasMany(CallCenter::class);
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

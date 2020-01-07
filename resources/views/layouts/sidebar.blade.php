@@ -15,6 +15,13 @@
             </div>
         </div>
         @endisset
+        @if (auth('marketing')->check() and request()->product)
+            <div class="site-logo">
+                <div>
+                    <img src="{{request()->product->photo}}" width="320">
+                </div>
+            </div>
+        @endif
     </header>
     <!-- /site header -->
 
