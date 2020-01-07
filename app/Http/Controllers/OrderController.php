@@ -35,7 +35,7 @@ class OrderController extends Controller
         return view('pages.order.form',compact('single'));
     }
 
-    public function store(OrderRequest $request)
+    public function store(Product $product,OrderRequest $request)
     {
         $patient = User::where('serial_number',$request->serial_number)->first();
         if (!$patient)
@@ -48,10 +48,11 @@ class OrderController extends Controller
         {
             return redirect()->back()->with('message','Pack serial number Wrong. Try Again!');
         }
+        $product = $patient->callCenter->product;
         $inputs = $request->all();
         $inputs['patient_id']=$patient->id;
         $inputs['batch_id']=$pack->id;
-        $inputs['product_id']=$patient->callCenter->product_id;
+        $inputs['product_id']=$product->id;
         $user = auth('pharmacy')->user();
         $order = $user->orders()->create($inputs);
         if ($order)
@@ -88,7 +89,7 @@ class OrderController extends Controller
                 }
             }
         }
-        return redirect()->route('orders.index')->with('message','Operation Done Successfully');
+        return redirect()->route('orders.index',$product->company->id)->with('message','Operation Done Successfully');
     }
 
     public function foc()
@@ -130,6 +131,6 @@ class OrderController extends Controller
 
         $message = "كود العبوة {$request->pack_number}";
         $this->sendSMS($order->patient->phone,$message);
-        return redirect()->route('orders.index')->with('message','Operation Done Successfully');
+        return redirect()->route('orders.index',$order->product->company->id)->with('message','Operation Done Successfully');
     }
 }

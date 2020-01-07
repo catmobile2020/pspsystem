@@ -80,8 +80,9 @@ Route::group(['prefix'=>'/pharmacy'],function (){
         Route::get('/companies/{single}','OrderController@company')->name('single-company');
         Route::get('/companies/{single}/orders','OrderController@index')->name('orders.index');
 
-        Route::resource('orders','OrderController');
+//        Route::resource('orders','OrderController');
         Route::get('products/{single}/orders','OrderController@create')->name('orders.create');
+        Route::post('products/{single}/orders','OrderController@store')->name('orders.store');
         Route::get('orders/foc/activate','OrderController@foc')->name('orders.foc');
         Route::post('orders/foc/activate','OrderController@postFoc')->name('orders.foc');
 
@@ -145,7 +146,7 @@ Route::group(['prefix'=>'/callcenter'],function (){
 
 Route::get('adverse-reporting','AdverseController@index')->name('adverse-reporting.index');
 
-Route::group(['prefix'=>'/users'],function (){
+Route::group(['prefix'=>'/user'],function (){
     Route::group(['namespace'=>'Auth'],function (){
         Route::get('/login','UserController@index')->name('user.login');
         Route::post('/login','UserController@login')->name('user.login');

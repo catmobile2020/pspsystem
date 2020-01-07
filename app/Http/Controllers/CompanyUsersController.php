@@ -18,7 +18,7 @@ class CompanyUsersController extends Controller
     public function create(Company $company)
     {
         $marketing = new CompanyUsers();
-        $products = Product::all();
+        $products = $company->products;
         return view('pages.company.user.form',compact('company','marketing','products'));
     }
 
@@ -31,7 +31,7 @@ class CompanyUsersController extends Controller
 
     public function edit(Company $company,CompanyUsers $marketing)
     {
-        $products = Product::all();
+        $products = $company->products;
         return view('pages.company.user.form',compact('company','marketing','products'));
     }
 

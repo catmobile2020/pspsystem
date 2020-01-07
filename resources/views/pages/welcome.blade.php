@@ -67,7 +67,7 @@
                 <a href="callcenter">Call Center</a>
             </li>
             <li class="list-group-item">
-                <a href="users">user</a>
+                <a href="user">user</a>
             </li>
 
             <li class="list-group-item">

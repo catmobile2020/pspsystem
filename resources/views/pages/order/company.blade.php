@@ -354,16 +354,16 @@
 
             @if (auth('pharmacy')->check())
                 <div class='thing text-center'>
-                    <a href="{{route('orders.foc')}}">
-                        <img src="{{asset('assets/icons/orders.png')}}" style="height: 50px;">
-                        <p class="title">Redeem Free Pack</p>
-                    </a>
-                </div>
-                <div class='thing text-center'>
                     <a href="{{route('orders.index',$single->id)}}">
                         <img src="{{asset('assets/icons/orders.png')}}" style="height: 50px;">
                         <p class="title">All Orders</p>
                         <p class="help-block">Menu items with all data</p>
+                    </a>
+                </div>
+                <div class='thing text-center'>
+                    <a href="{{route('orders.foc')}}">
+                        <img src="{{asset('assets/icons/orders.png')}}" style="height: 50px;">
+                        <p class="title">Redeem Free Pack</p>
                     </a>
                 </div>
                 @foreach($single->products as $product)

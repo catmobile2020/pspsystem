@@ -30,7 +30,7 @@
                                 <h4>{{session()->get('message')}}</h4>
                             </div>
                         @endif
-                        <form action="{{isset($order->id) ? route('orders.update',$order->id) : route('orders.store')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('orders.store',$single->id)}}" method="post" enctype="multipart/form-data">
                             {{csrf_field()}}
                             @isset($order->id)
                                 <input type="hidden" name="_method" value="PUT"/>

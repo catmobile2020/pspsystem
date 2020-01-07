@@ -52,7 +52,7 @@
                                 <div class="form-group">
                                     <label>type</label>
                                     <select name="type" class="form-control changeType">
-                                        <option value="2" {{$marketing->type == 2 ? 'selected' : ''}}>User</option>
+                                        <option value="2" {{$marketing->type == 2 ? 'selected' : ''}}>Marketing</option>
                                         <option value="1" {{$marketing->type == 1 ? 'selected' : ''}}>Admin</option>
                                     </select>
                                 </div>
