@@ -29,11 +29,9 @@
 
         @include('layouts.header')
         @if (auth('marketing')->check())
-            <div class="site-logo">
-                <div>
-                    <img src="{{auth('marketing')->user()->company->photo}}" height="150">
+                <div class="row" style="background-color: #f5f5f5; padding: 12px 50px">
+                    <img class="center-block" src="{{auth('marketing')->user()->company->photo}}" style="height: 115px">
                 </div>
-            </div>
         @endif
         <!-- Main content -->
         @yield('content')

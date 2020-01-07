@@ -15,10 +15,27 @@
             </div>
         </div>
         @endisset
+
         @if (auth('marketing')->check() and request()->product)
             <div class="site-logo">
                 <div>
                     <img src="{{request()->product->photo}}" width="320">
+                </div>
+            </div>
+        @endif
+
+        @if (auth('callcenter')->check() )
+            <div class="site-logo">
+                <div>
+                    <img src="{{auth('callcenter')->user()->product->photo}}" width="320">
+                </div>
+            </div>
+        @endif
+
+        @if (auth('marketing')->check() and auth('marketing')->user()->type == 2)
+            <div class="site-logo">
+                <div>
+                    <img src="{{auth('marketing')->user()->product->photo}}" width="320">
                 </div>
             </div>
         @endif

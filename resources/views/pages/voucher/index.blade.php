@@ -10,11 +10,15 @@
             <li><a href="{{route('home')}}"><i class="fa fa-home"></i>Home</a></li>
             <li class="active"><strong>vouchers</strong></li>
         </ol>
+        <div class="col-lg-12 text-center">
+            <a class="btn btn-primary" href="/{{explode('/',request()->route()->uri())[0]}}">
+                <i class="icon-back"></i> Back to homepage</a>
+        </div>
+        <div class="height-50"></div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
-                        <a class="btn btn-primary btn-rounded" href="/{{explode('/',request()->route()->uri())[0]}}">Home</a>
                         <h3 class="panel-title">
                             <a class="btn btn-success btn-rounded" href="{{route('patient.vouchers.create',$patient->id)}}">Add Voucher</a>
                         </h3>

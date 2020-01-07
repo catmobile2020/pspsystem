@@ -10,11 +10,15 @@
             <li><a href="{{route('home')}}"><i class="fa fa-home"></i>Home</a></li>
             <li class="active"><strong>users</strong></li>
         </ol>
+        <div class="col-lg-12 text-center">
+            <a class="btn btn-primary" href="/{{explode('/',request()->route()->uri())[0]}}">
+                <i class="icon-back"></i> Back to homepage</a>
+        </div>
+        <div class="height-50"></div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
-                        <a class="btn btn-primary btn-rounded" href="/{{explode('/',request()->route()->uri())[0]}}">Home</a>
                         <a href="{{route('marketing.create',$company->id)}}" class="btn btn-success">Add New</a>
                     </div>
                     <div class="panel-body">
@@ -49,8 +53,10 @@
                                         <td>{{$row->product->name}}</td>
                                         <td>{{$row->created_at->format('Y-m-d')}}</td>
                                         <td class="size-80">
-                                            <a href="{{route('marketing.edit',[$company->id,$row->id])}}">Edit</a>
-                                            <a href="{{route('marketing.destroy',[$company->id,$row->id])}}">Delete</a>
+                                            <div class="btn-group-vertical">
+                                                <a class="btn btn-blue" href="{{route('marketing.edit',[$company->id,$row->id])}}"><i class="fa fa-pencil-square-o"></i> Edit</a>
+                                                <a class="btn btn-danger" href="{{route('marketing.destroy',[$company->id,$row->id])}}"><i class="fa fa-trash-o"></i> Delete</a>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

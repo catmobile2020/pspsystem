@@ -10,11 +10,15 @@
             <li><a href="{{route('home')}}"><i class="fa fa-home"></i>Home</a></li>
             <li class="active"><strong>companies</strong></li>
         </ol>
+        <div class="col-lg-12 text-center">
+            <a class="btn btn-primary" href="/{{explode('/',request()->route()->uri())[0]}}">
+                <i class="icon-back"></i> Back to homepage</a>
+        </div>
+        <div class="height-50"></div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
-                        <a class="btn btn-primary btn-rounded" href="/{{explode('/',request()->route()->uri())[0]}}">Home</a>
                         <a href="{{route('companies.create')}}" class="btn btn-success">Add New</a>
                     </div>
                     <div class="panel-body">
@@ -45,9 +49,11 @@
                                         <td>{{$row->address}}</td>
                                         <td>{{$row->created_at->format('Y-m-d')}}</td>
                                         <td class="size-80">
-                                            <a href="{{route('marketing.index',$row->id)}}">Users</a>
-                                            <a href="{{route('companies.edit',$row->id)}}">Edit</a>
-{{--                                            <a href="{{route('companies.destroy',$row->id)}}">Delete</a>--}}
+                                            <div class="btn-group-vertical">
+                                                <a class="btn btn-blue" href="{{route('marketing.index',$row->id)}}"><i class="fa fa-users"></i> Users</a>
+                                                <a class="btn btn-info" href="{{route('companies.edit',$row->id)}}"><i class="fa fa-pencil-square-o"></i> Edit</a>
+                                            </div>
+                                               {{--<a href="{{route('companies.destroy',$row->id)}}">Delete</a>--}}
 {{--                                            <div class="dropdown">--}}
 {{--                                                <a href="" data-toggle="dropdown" class="more-link"><i class="icon-dot-3 ellipsis-icon"></i></a>--}}
 {{--                                                <ul class="dropdown-menu dropdown-menu-right">--}}
