@@ -32,6 +32,8 @@ Route::group(['prefix'=>'/admin'],function (){
             Route::resource('callcenters','CallCenterController');
             Route::get('callcenters/{callcenter}/destroy','CallCenterController@destroy')->name('callcenters.destroy');
 
+            Route::get('callcenters/companies/{company}','CallCenterController@companyProducts')->name('callcenters.company-products');
+
 //            Route::get('adverse-reporting','AdverseController@index')->name('adverse-reporting.index');
         });
 
