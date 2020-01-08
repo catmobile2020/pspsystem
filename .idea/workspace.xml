@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="61e52b0f-1de5-4c4b-97a6-bccdeb0fd22c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CallCenterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CallCenterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/callcenter/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/callcenter/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,9 +28,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="PhpServers">
-    <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -156,15 +152,15 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Http/Controllers/Auth" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/resources/views/pages/auth" />
       <recent name="$PROJECT_DIR$/resources/views/pages/company" />
       <recent name="$PROJECT_DIR$/resources/views/pages/marketing" />
       <recent name="C:\xampp\htdocs\pspsystem\resources\views\pages" />
-      <recent name="C:\xampp\htdocs\pspsystem\resources\views\layouts" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/Http/Controllers/Auth" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -203,7 +199,7 @@
       <workItem from="1577957824763" duration="3248000" />
       <workItem from="1578219764021" duration="7581000" />
       <workItem from="1578476121958" duration="586000" />
-      <workItem from="1578476730379" duration="1486000" />
+      <workItem from="1578476730379" duration="6687000" />
     </task>
     <servers />
   </component>

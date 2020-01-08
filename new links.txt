@@ -1,0 +1,25 @@
+Admin login page:
+
+ http://psp-system.digitalcatsite.com/admin/login
+username: admin
+password: 123456
+
+Company Accounts login page:
+http://psp-system.digitalcatsite.com/marketing/login
+For admin account
+username: admin
+password: 123456
+
+For marketing account
+username: ibrahim
+password: 123456
+
+Call center agent:
+http://psp-system.digitalcatsite.com/callcenter/login
+username: cca1
+password: 123456
+
+Pharmacy login page:
+http://psp-system.digitalcatsite.com/pharmacy/login
+username: 19011
+password: 123456

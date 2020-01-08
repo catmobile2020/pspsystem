@@ -1,0 +1,48 @@
+Admin login page:
+
+https://digitalcatsite.com/pspapp/admin/login
+
+username: admin
+password: 123456
+
+Novartis login page:
+
+https://digitalcatsite.com/pspapp/admin/login
+
+username: novartis
+password: 123456
+
+Novartis login page:
+
+https://digitalcatsite.com/pspapp/marketing/login
+
+username: marketing
+password: 123456
+
+Call center agent:
+
+https://digitalcatsite.com/pspapp/call-centers/login
+
+Doctor login page:
+
+https://digitalcatsite.com/pspapp/users/login
+
+Pharmacy login page:
+
+https://digitalcatsite.com/pspapp/users/login
+
+Lab login page :
+
+https://digitalcatsite.com/pspapp/users/login
+
+Healthcare login page:
+
+https://digitalcatsite.com/pspapp/users/login
+
+Hospital / Center login page:
+
+https://digitalcatsite.com/pspapp/users/login
+
+Patient login page:
+
+https://digitalcatsite.com/pspapp/users/login

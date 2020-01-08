@@ -66,7 +66,7 @@ class CallCenterController extends Controller
                                         <option selected value>Select Product</option>';
 
             foreach($products as $product)
-                $element.='<option value="{{$product->id}}">'.$product->name.'</option>';
+                $element.='<option value="'.$product->id.'">'.$product->name.'</option>';
 
            $element.='</select>';
          return $element;
