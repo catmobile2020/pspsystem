@@ -150,33 +150,63 @@ Route::group(['prefix'=>'/callcenter'],function (){
 
 Route::get('adverse-reporting','AdverseController@index')->name('adverse-reporting.index');
 
-Route::group(['prefix'=>'/user'],function (){
-    Route::group(['namespace'=>'Auth'],function (){
-        Route::get('/login','UserController@index')->name('user.login');
-        Route::post('/login','UserController@login')->name('user.login');
-        Route::get('/logout','UserController@logout')->name('user.logout');
-    });
-
-    Route::group(['middleware'=>['auth:web']],function (){
-        Route::get('/','HomeController@index')->name('home');
-//        Route::resource('orders','OrderController');
-//        Route::get('orders/foc/activate','OrderController@foc')->name('orders.foc');
-//        Route::post('orders/foc/activate','OrderController@postFoc')->name('orders.foc');
-
-        Route::get('tests','TestController@patientTestsIndex')->name('tests.index');
-        Route::post('tests/{test}/upload-result','TestController@uploadPatientResult')->name('patient.upload-test.result');
-
-
-        Route::get('examinations','ExaminationController@patientTestsIndex')->name('examinations.index');
-        Route::post('examinations/{examination}/upload-result','ExaminationController@uploadPatientResult')->name('examinations.patient.upload-test.result');
-
-        Route::get('doctor/patients','DoctorController@getPatients')->name('doctor.patients.index');
-
-        Route::get('vouchers/index','VoucherController@myVouchers')->name('vouchers.myVouchers');
-        Route::get('vouchers/search','VoucherController@searchVoucher')->name('vouchers.search');
-        Route::post('vouchers/search','VoucherController@testVoucher')->name('vouchers.test');
-    });
-});
+//Route::group(['prefix'=>'/user'],function (){
+//    Route::group(['namespace'=>'Auth'],function (){
+//        Route::get('/login','UserController@index')->name('user.login');
+//        Route::post('/login','UserController@login')->name('user.login');
+//        Route::get('/logout','UserController@logout')->name('user.logout');
+//    });
+//
+//    Route::group(['middleware'=>['auth:web']],function (){
+//        Route::get('/','HomeController@index')->name('home');
+////        Route::resource('orders','OrderController');
+////        Route::get('orders/foc/activate','OrderController@foc')->name('orders.foc');
+////        Route::post('orders/foc/activate','OrderController@postFoc')->name('orders.foc');
+//
+//        Route::get('tests','TestController@patientTestsIndex')->name('tests.index');
+//        Route::post('tests/{test}/upload-result','TestController@uploadPatientResult')->name('patient.upload-test.result');
+//
+//
+//        Route::get('examinations','ExaminationController@patientTestsIndex')->name('examinations.index');
+//        Route::post('examinations/{examination}/upload-result','ExaminationController@uploadPatientResult')->name('examinations.patient.upload-test.result');
+//
+//        Route::get('doctor/patients','DoctorController@getPatients')->name('doctor.patients.index');
+//
+//        Route::get('vouchers/index','VoucherController@myVouchers')->name('vouchers.myVouchers');
+//        Route::get('vouchers/search','VoucherController@searchVoucher')->name('vouchers.search');
+//        Route::post('vouchers/search','VoucherController@testVoucher')->name('vouchers.test');
+//    });
+//});
 
 
 Route::get('/','HomeController@welcome')->name('home');
+
+
+// Doctor And Patient routes
+Route::group(['prefix'=>'/users'],function (){
+    Route::group(['namespace'=>'Auth'],function (){
+        Route::get('/login','UserController@index')->name('users.login');
+        Route::post('/login','UserController@login')->name('users.login');
+        Route::get('/logout','UserController@logout')->name('users.logout');
+    });
+//
+    Route::group(['middleware'=>['auth:web']],function (){
+        Route::get('/','HomeController@index')->name('home');
+        Route::get('doctors/{doctor}/cards','PatientOrderController@cards')->name('doctor.patients-cards');
+        Route::get('my-orders','PatientOrderController@index')->name('my-orders.index');
+        Route::get('single/patient-orders/{user}','PatientOrderController@singlePatient')->name('my-orders.singlePatient');
+        Route::get('product-patients','PatientOrderController@productPatients')->name('product-patients.index');
+
+
+
+        Route::get('/companies/{single}','OrderController@company')->name('single-company');
+        Route::get('/companies/{single}/orders','OrderController@index')->name('orders.index');
+
+//        Route::resource('orders','OrderController');
+        Route::get('products/{single}/orders','OrderController@create')->name('orders.create');
+        Route::post('products/{single}/orders','OrderController@store')->name('orders.store');
+        Route::get('orders/foc/activate','OrderController@foc')->name('orders.foc');
+        Route::post('orders/foc/activate','OrderController@postFoc')->name('orders.foc');
+
+    });
+});

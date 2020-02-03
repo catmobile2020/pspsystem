@@ -67,7 +67,10 @@
                 <a href="callcenter">Call Center</a>
             </li>
             <li class="list-group-item">
-                <a href="user">user</a>
+                <a href="users">Doctor</a>
+            </li>
+            <li class="list-group-item">
+                <a href="users">Patient</a>
             </li>
 
             <li class="list-group-item">

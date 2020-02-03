@@ -27,4 +27,26 @@ class Order extends Model
     {
         return $this->has_free ? asset('assets/images/free.png') : asset('assets/images/paid.png');
     }
+
+    public function image()
+    {
+        return $this->morphOne('App\Image', 'imageable')->withDefault([
+            'url'=>asset('assets/images/default-image.png')
+        ]);
+    }
+    public function getPhotoAttribute()
+    {
+        return $this->image->full_url;
+    }
+
+    public function trash()
+    {
+        $photo = public_path($this->image->url);
+        if (is_file($photo))
+        {
+            @unlink($photo);
+            $this->image()->delete();
+        }
+        $this->delete();
+    }
 }

@@ -33,6 +33,14 @@
                     <img class="center-block" src="{{auth('marketing')->user()->company->photo}}" style="height: 115px">
                 </div>
         @endif
+
+        <div class="modal fade" id="showModalContent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" id="insertModalData">
+
+                </div>
+            </div>
+        </div>
         <!-- Main content -->
         @yield('content')
         <!-- /main content -->

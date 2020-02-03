@@ -40,7 +40,7 @@
                                     <th>CLIENT NAME	</th>
                                     <th>Pharmacy NAME	</th>
                                     <th>PURCHASE TYPE</th>
-{{--                                    <th>Action</th>--}}
+                                    <th>PACK PHOTO</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -54,6 +54,9 @@
                                         <td>{{$row->pharmacy->name}}</td>
                                         <td>
                                             <img src="{{$row->has_free_photo}}" />
+                                        </td>
+                                        <td>
+                                            <img class="img-responsive" style="height: 200px;width: auto" src="{{$row->photo}}"/>
                                         </td>
 {{--                                        <td class="size-80">--}}
 {{--                                            <a href="{{route('orders.edit',$row->id)}}">Edit</a>--}}
@@ -78,7 +81,7 @@
                                     <th>CLIENT NAME	</th>
                                     <th>Pharmacy NAME	</th>
                                     <th>PURCHASE TYPE</th>
-{{--                                    <th>Action</th>--}}
+                                    <th>PACK PHOTO</th>
                                 </tr>
                                 </tfoot>
                             </table>
