@@ -48,25 +48,11 @@ Route::group(['prefix'=>'/marketing'],function (){
         Route::post('/login','CompanyUsersController@login')->name('marketing.login');
         Route::get('/logout','CompanyUsersController@logout')->name('marketing.logout');
     });
-//
+
     Route::group(['middleware'=>['auth:marketing']],function (){
         Route::get('/','HomeController@index')->name('home');
         Route::get('/statistics','StatisticController@index')->name('statistics.index');
         Route::get('/statistics/{product}','StatisticController@product')->name('statistics.product');
-//        Route::get('/novartis-programs','HomeController@myPrograms')->name('novartis.programs');
-//        Route::get('/statistics','MarketingController@index')->name('marketing.index');
-//        Route::get('/patient-statistics','MarketingController@patientStatistics')->name('marketing.patient-statistics');
-//        Route::get('/doctor-statistics','MarketingController@doctorStatistics')->name('marketing.doctor-statistics');
-//        Route::get('/pharmacy-statistics','MarketingController@pharmacyStatistics')->name('marketing.pharmacy-statistics');
-//        Route::get('/laboratory-statistics','MarketingController@labStatistics')->name('marketing.lab-statistics');
-//        Route::get('/hospital-statistics','MarketingController@hospitalStatistics')->name('marketing.hospital-statistics');
-//        Route::get('/health-statistics','MarketingController@healthStatistics')->name('marketing.health-statistics');
-
-
-//        Route::get('/profile','ProfileController@index')->name('profile');
-//        Route::post('/profile','ProfileController@update')->name('profile.update');
-
-
     });
 });
 
@@ -81,6 +67,33 @@ Route::group(['prefix'=>'/pharmacy'],function (){
 //
     Route::group(['middleware'=>['auth:pharmacy']],function (){
         Route::get('/','HomeController@index')->name('home');
+
+        Route::resource('users','PharmacyUsersController');
+        Route::get('/users/{user}/orders','PharmacyUsersController@pharmacistOrders')->name('single-user.orders');
+//        Route::get('/companies/{single}','OrderController@company')->name('single-company');
+//        Route::get('/companies/{single}/orders','OrderController@index')->name('orders.index');
+//
+////        Route::resource('orders','OrderController');
+//        Route::get('products/{single}/orders','OrderController@create')->name('orders.create');
+//        Route::post('products/{single}/orders','OrderController@store')->name('orders.store');
+//        Route::get('orders/foc/activate','OrderController@foc')->name('orders.foc');
+//        Route::post('orders/foc/activate','OrderController@postFoc')->name('orders.foc');
+
+    });
+});
+
+//pharmacy users routes
+
+Route::group(['prefix'=>'/pharmacyUsers'],function (){
+    Route::group(['namespace'=>'Auth'],function (){
+        Route::get('/login','PharmacyUsersController@index')->name('pharmacyUsers.login');
+        Route::post('/login','PharmacyUsersController@login')->name('pharmacyUsers.login');
+        Route::get('/logout','PharmacyUsersController@logout')->name('pharmacyUsers.logout');
+    });
+
+    Route::group(['middleware'=>['auth:pharmacyUsers']],function (){
+        Route::get('/','HomeController@index')->name('home');
+
         Route::get('/companies/{single}','OrderController@company')->name('single-company');
         Route::get('/companies/{single}/orders','OrderController@index')->name('orders.index');
 
@@ -89,9 +102,10 @@ Route::group(['prefix'=>'/pharmacy'],function (){
         Route::post('products/{single}/orders','OrderController@store')->name('orders.store');
         Route::get('orders/foc/activate','OrderController@foc')->name('orders.foc');
         Route::post('orders/foc/activate','OrderController@postFoc')->name('orders.foc');
-
     });
 });
+
+
 
 Route::group(['prefix'=>'/callcenter'],function (){
     Route::group(['namespace'=>'Auth'],function (){
@@ -199,14 +213,14 @@ Route::group(['prefix'=>'/users'],function (){
 
 
 
-        Route::get('/companies/{single}','OrderController@company')->name('single-company');
-        Route::get('/companies/{single}/orders','OrderController@index')->name('orders.index');
+//        Route::get('/companies/{single}','OrderController@company')->name('single-company');
+//        Route::get('/companies/{single}/orders','OrderController@index')->name('orders.index');
 
 //        Route::resource('orders','OrderController');
-        Route::get('products/{single}/orders','OrderController@create')->name('orders.create');
-        Route::post('products/{single}/orders','OrderController@store')->name('orders.store');
-        Route::get('orders/foc/activate','OrderController@foc')->name('orders.foc');
-        Route::post('orders/foc/activate','OrderController@postFoc')->name('orders.foc');
+//        Route::get('products/{single}/orders','OrderController@create')->name('orders.create');
+//        Route::post('products/{single}/orders','OrderController@store')->name('orders.store');
+//        Route::get('orders/foc/activate','OrderController@foc')->name('orders.foc');
+//        Route::post('orders/foc/activate','OrderController@postFoc')->name('orders.foc');
 
     });
 });

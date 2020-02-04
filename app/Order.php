@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $fillable=['serial_number', 'comment', 'has_free', 'confirmation_code', 'activated', 'batch_id','free_serial','product_id','patient_id', 'pharmacy_id'];
+    protected $fillable=['serial_number', 'comment', 'has_free', 'confirmation_code', 'activated', 'batch_id','free_serial','product_id','patient_id', 'pharmacy_users_id'];
 
-    public function pharmacy()
+    public function pharmacyUser()
     {
-        return $this->belongsTo(Pharmacy::class);
+        return $this->belongsTo(PharmacyUsers::class,'pharmacy_users_id')->withDefault();
     }
 
     public function patient()

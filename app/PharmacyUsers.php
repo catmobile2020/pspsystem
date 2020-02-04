@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class Pharmacy extends Authenticatable
+class PharmacyUsers extends Authenticatable
 {
     use Notifiable;
 
@@ -16,7 +16,7 @@ class Pharmacy extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email','address', 'phone', 'preferred_distributor','password', 'governorate_id'
+        'name','username','active','email', 'password','pharmacy_id'
     ];
 
     /**
@@ -33,14 +33,13 @@ class Pharmacy extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
-
-    public function governorate()
+    public function pharmacy()
     {
-        return $this->belongsTo(Governorate::class);
+        return $this->belongsTo(Pharmacy::class)->withDefault();
     }
 
-    public function users()
+    public function orders()
     {
-        return $this->hasMany(PharmacyUsers::class);
+        return $this->hasMany(Order::class);
     }
 }

@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
-@section('title','patients')
+@section('title','users')
 
 @section('content')
     <div class="main-content">
-        <h1 class="page-title">patients</h1>
+        <h1 class="page-title">users</h1>
         <!-- Breadcrumb -->
         <ol class="breadcrumb breadcrumb-2">
             <li><a href="{{route('home')}}"><i class="fa fa-home"></i>Home</a></li>
-            <li class="active"><strong>tests</strong></li>
+            <li class="active"><strong>users</strong></li>
         </ol>
         <div class="col-lg-12 text-center">
             <a class="btn btn-primary" href="/{{explode('/',request()->route()->uri())[0]}}">
@@ -19,25 +19,28 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
-                        Patients
+                        <a href="{{route('users.create')}}" class="btn btn-success">Add New</a>
                     </div>
                     <div class="panel-body">
-                        <div class="alert alert-success text-center sr-only" id="statusResult">
+                        @if (session()->has('message'))
+                            <div class="alert alert-info">
+                               <h4>{{session()->get('message')}}</h4>
+                            </div>
+                        @endif
+                            <div class="alert alert-success text-center sr-only" id="statusResult">
 
-                        </div>
+                            </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover dataTables-example" >
                                 <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>name</th>
+                                    <th>username</th>
                                     <th>email</th>
-                                    <th>call center</th>
-                                    <th>All packs</th>
-                                    <th>Paid packs</th>
-                                    <th>Free packs</th>
                                     <th>Created At</th>
-                                    <th>Actions</th>
+                                    <th>Orders</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -45,14 +48,17 @@
                                     <tr class="gradeX">
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$row->name}}</td>
+                                        <td>{{$row->username}}</td>
                                         <td>{{$row->email}}</td>
-                                        <td>{{$row->callCenter->name}}</td>
-                                        <td>{{ $row->patientOrders->count() }}</td>
-                                         <td>{{ $row->patientOrders->where('has_free', 0)->count() }}</td>
-                                        <td>{{ $row->patientOrders->where('has_free', 1)->count()}}</td>
                                         <td>{{$row->created_at->format('Y-m-d')}}</td>
                                         <td>
-                                            <a class="btn btn-success" href="{{route('my-orders.singlePatient',$row->id)}}"><i class="fa fa-eye"></i></a>
+                                            <a class="btn btn-success" href="{{route('single-user.orders',$row->id)}}"><i class="fa fa-sticky-note"></i> Orders</a>
+                                        </td>
+                                        <td class="size-80">
+                                            <div class="btn-group-vertical">
+                                                <a class="btn btn-blue" href="{{route('users.edit',$row->id)}}"><i class="fa fa-pencil-square-o"></i> Edit</a>
+                                                <a class="btn btn-danger" href="{{route('users.destroy',$row->id)}}"><i class="fa fa-trash-o"></i> Delete</a>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -62,13 +68,11 @@
                                 <tr>
                                     <th>#</th>
                                     <th>name</th>
+                                    <th>username</th>
                                     <th>email</th>
-                                    <th>call center</th>
-                                    <th>All packs</th>
-                                    <th>Paid packs</th>
-                                    <th>Free packs</th>
                                     <th>Created At</th>
-                                    <th>Actions</th>
+                                    <th>Orders</th>
+                                    <th>Action</th>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -78,23 +82,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('js')
-    <script>
-        $(document).on('change','.changeStatus',function () {
-            let  active = $(this).val();
-            let  id = $(this).data('id');
-            $.ajax({
-                data:{id:id,active:active},
-                success:function (result) {
-                    $('#statusResult').removeClass('sr-only');
-                    $('#statusResult').html(result);
-                },
-                error:function (errors) {
-                    console.log(errors);
-                }
-            });
-        });
-    </script>
 @endsection

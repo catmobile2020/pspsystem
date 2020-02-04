@@ -23,7 +23,7 @@
 
     <div class="col-sm-6 col-xs-5">
         <div class="pull-right">
-            Welcome, {{auth(explode('/',request()->route()->uri())[0] != 'users' ?: 'web')->user()->name}} |
+            Welcome, {{auth(explode('/',request()->route()->uri())[0] == 'users' ? 'web' : explode('/',request()->route()->uri())[0])->user()->name}} |
             <a href="{{route(explode('/',request()->route()->uri())[0].'.logout')}}">Logout <i class="icon-logout"></i> </a>
             <ul class="user-info pull-left">
 

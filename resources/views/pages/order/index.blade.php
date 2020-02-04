@@ -38,7 +38,8 @@
                                     <th>Created At</th>
                                     <th>CLIENT CODE	</th>
                                     <th>CLIENT NAME	</th>
-                                    <th>Pharmacy NAME	</th>
+                                    <th>Pharmacy NAME</th>
+                                    <th>Pharmacy USER NAME</th>
                                     <th>PURCHASE TYPE</th>
                                     <th>PACK PHOTO</th>
                                 </tr>
@@ -51,7 +52,8 @@
                                         <td>{{$row->created_at->format('Y-m-d h:i A')}}</td>
                                         <td>{{$row->patient->serial_number}}</td>
                                         <td>{{$row->patient->name}}</td>
-                                        <td>{{$row->pharmacy->name}}</td>
+                                        <td>{{$row->pharmacyUser->pharmacy->name}}</td>
+                                        <td>{{$row->pharmacyUser->name}}</td>
                                         <td>
                                             <img src="{{$row->has_free_photo}}" />
                                         </td>
@@ -79,7 +81,8 @@
                                     <th>Created At</th>
                                     <th>CLIENT CODE	</th>
                                     <th>CLIENT NAME	</th>
-                                    <th>Pharmacy NAME	</th>
+                                    <th>Pharmacy NAME</th>
+                                    <th>Pharmacy USER NAME</th>
                                     <th>PURCHASE TYPE</th>
                                     <th>PACK PHOTO</th>
                                 </tr>

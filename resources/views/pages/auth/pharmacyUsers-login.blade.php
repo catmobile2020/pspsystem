@@ -31,11 +31,11 @@
 
     <!-- Bootstrap RTL stylesheet min version -->
 {{--    <link href="{{asset('assets/css/bootstrap-rtl.min.css')}}" rel="stylesheet">--}}
-<!-- /bootstrap rtl stylesheet min version -->
+    <!-- /bootstrap rtl stylesheet min version -->
 
     <!-- Mouldifi RTL core stylesheet -->
 {{--    <link href="{{asset('assets/css/mouldifi-rtl-core.css')}}" rel="stylesheet">--}}
-<!-- /mouldifi rtl core stylesheet -->
+    <!-- /mouldifi rtl core stylesheet -->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,43 +48,65 @@
 </head>
 <body class="login-page">
 <div class="login-container">
-
     <div class="login-content">
         <div class="login-branding">
             <a href="/"><img src="{{asset('assets/images/logo.png')}}" alt="Mouldifi" title="Mouldifi"></a>
         </div>
-        <ul class="list-unstyled">
-            <li class="list-group-item">
-                <a href="admin">Admin</a>
-            </li>
-            <li class="list-group-item">
-                <a href="marketing">Company Users</a>
-            </li>
-            <li class="list-group-item">
-                <a href="pharmacy">Pharmacy</a>
-            </li>
-            <li class="list-group-item">
-                <a href="pharmacyUsers">Pharmacy Users</a>
-            </li>
-            <li class="list-group-item">
-                <a href="callcenter">Call Center</a>
-            </li>
-            <li class="list-group-item">
-                <a href="users">Doctor</a>
-            </li>
-            <li class="list-group-item">
-                <a href="users">Patient</a>
-            </li>
+        <br>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+            @if (session()->has('message'))
+                <div class="alert alert-info">
+                    <h4>{{session()->get('message')}}</h4>
+                </div>
+            @endif
+        <h2><strong>Welcome</strong>, please login</h2>
+        <form method="POST" action="{{ route('pharmacyUsers.login') }}">
+           {{csrf_field()}}
+            <div class="form-group{{ $errors->has('username') || $errors->has('email') ? ' has-error' : '' }}">
 
-            <li class="list-group-item">
-                <a href="marketing/login">Novartis Marketing</a>
-            </li>
-        </ul>
+                <input type="text" class="form-control" name="username" placeholder="E-Mail / Username" value="{{old('username') }}" required autofocus>
+
+                @if ($errors->has('username'))
+                    <span class="help-block">
+                                        <strong>{{ $errors->first('username')}}</strong>
+                                    </span>
+                @endif
+            </div>
+            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+
+                <input id="password" type="password" placeholder="Password" class="form-control" name="password" required>
+
+                @if ($errors->has('password'))
+                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                @endif
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">
+                    Login
+                </button>
 
 
-        {{--        <h2>--}}
-        {{--            <a href="/patients">patient</a>--}}
-        {{--        </h2>--}}
+            </div>
+        </form>
     </div>
 </div>
 <!--Load JQuery-->

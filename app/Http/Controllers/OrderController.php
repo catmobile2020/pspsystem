@@ -7,6 +7,7 @@ use App\Company;
 use App\Helpers\UploadImage;
 use App\Http\Requests\OrderRequest;
 use App\Order;
+use App\PharmacyUsers;
 use App\Product;
 use App\User;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class OrderController extends Controller
 
     public function index(Company $single)
     {
-        $user = auth('pharmacy')->user();
+        $user = auth('pharmacyUsers')->user();
         $products = $single->products()->pluck('id')->toArray();
         $rows = $user->orders()->whereIn('product_id',$products)->latest()->paginate(15);
         return view('pages.order.index',compact('rows'));
@@ -31,7 +32,6 @@ class OrderController extends Controller
 
     public function create(Product $single)
     {
-
         return view('pages.order.form',compact('single'));
     }
 
@@ -53,7 +53,7 @@ class OrderController extends Controller
         $inputs['patient_id']=$patient->id;
         $inputs['batch_id']=$pack->id;
         $inputs['product_id']=$product->id;
-        $user = auth('pharmacy')->user();
+        $user = auth('pharmacyUsers')->user();
         $order = $user->orders()->create($inputs);
         if ($order)
         {
@@ -99,7 +99,7 @@ class OrderController extends Controller
 
     public function postFoc(OrderRequest $request)
     {
-        $user = auth('pharmacy')->user();
+        $user = auth('pharmacyUsers')->user();
         $order = Order::where('serial_number',$request->serial_number)->where('confirmation_code',$request->code)->first();
         if (!$order)
         {
@@ -121,7 +121,7 @@ class OrderController extends Controller
         }
         $order->update([
             'activated'=>true,
-            'pharmacy_id'=>$user->id,
+            'pharmacy_users_id'=>$user->id,
             'batch_id'=>$pack->id,
             'free_serial'=>$free_pack->serial,
             'confirmation_code'=>null

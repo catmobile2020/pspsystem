@@ -412,6 +412,15 @@
             </div>
             @endif
             @if (auth('pharmacy')->check())
+                <div class='thing text-center'>
+                    <a href="{{route('users.index')}}">
+                        <img src="{{asset('assets/icons/patients.png')}}" style="height: 50px;">
+                        <p class="title">Users</p>
+                        <p class="help-block">Pharmacy Users</p>
+                    </a>
+                </div>
+            @endif
+            @if (auth('pharmacyUsers')->check())
                 @foreach($companies as $company)
                     <div class='thing text-center'>
                         <a href="{{route('single-company',$company->id)}}">
