@@ -42,6 +42,7 @@
                                     <th>CLIENT Age</th>
                                     <th>CLIENT Governorate</th>
                                     <th>Pharmacy NAME</th>
+                                    <th>Pharmacist NAME</th>
                                     <th>PURCHASE TYPE</th>
                                     <th>Created At</th>
                                 </tr>
@@ -55,7 +56,8 @@
                                         <td>{{$row->patient->age}}</td>
                                         <td>{{$row->patient->sex ? 'Male' : 'Female'}}</td>
                                         <td>{{$row->patient->governorate->name}}</td>
-                                        <td>{{$row->pharmacy->name}}</td>
+                                        <td>{{$row->pharmacyUser->pharmacy->name}}</td>
+                                        <td>{{$row->pharmacyUser->name}}</td>
                                         <td>
                                             <img src="{{$row->has_free_photo}}" />
                                         </td>
