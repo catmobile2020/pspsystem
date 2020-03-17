@@ -5,10 +5,34 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\OrderResource;
 use App\Http\Resources\UserResource;
+use App\Http\Resources\UsersResource;
 use App\User;
 
 class PatientController extends Controller
 {
+
+    /**
+     *
+     * @SWG\Get(
+     *      tags={"patients"},
+     *      path="/my-patients",
+     *      summary="get doctor patients",
+     *      security={
+     *          {"jwt": {}}
+     *      },
+     *      @SWG\Response(response=200, description="object"),
+     * )
+     */
+    public function index()
+    {
+        $user = auth()->user();
+        if ($user->type != 4)
+        {
+            return $this->responseJson( 'You Must Have Doctor Account Privileges',400);
+        }
+        $patients = $user->patients()->paginate($this->api_paginate_num);
+        return UsersResource::collection($patients);
+    }
 
     /**
      *

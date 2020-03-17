@@ -25,7 +25,8 @@ class OrderResource extends JsonResource
               "batch_id"  => $this->batch_id,
               "product"  => $this->product_id,
               "pharmacy_users_id"  => $this->pharmacy_users_id,
-             "created_at"  => $this->created_at->format('d/m/Y h:i A'),
+              "created_at"  => $this->created_at->format('d/m/Y h:i A'),
+              "photo"  => $this->photo,
         ];
     }
 }

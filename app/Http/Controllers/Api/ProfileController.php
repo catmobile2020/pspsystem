@@ -6,6 +6,8 @@ use App\Helpers\UploadImage;
 use App\Http\Requests\Api\RegisterRequest;
 use App\Http\Resources\AccountResource;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CardResource;
+use App\Http\Resources\ProductResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -13,29 +15,30 @@ class ProfileController extends Controller
 {
     use UploadImage;
 
-//    public function __construct()
-//    {
+    public function __construct()
+    {
 //        $guard = explode('/',request()->route()->uri())[2];
-//        if ($guard == 'users')
-//        {
-//            $guard ='api';
-//        }else
-//        {
-//            $this->guard = $guard;
-//        }
-//        $this->middleware('auth:'.$guard, ['except' => ['login','register','resetPassword']]);
-//        auth()->shouldUse($guard);
-//    }
+        $guard = request()->guard;
+        auth()->shouldUse($guard);
+    }
 
     /**
      *
      * @SWG\Get(
      *      tags={"account"},
-     *      path="/account/me",
+     *      path="/account/{guard}/me",
      *      summary="Get the current logged in user",
      *      security={
      *          {"jwt": {}}
-     *      },
+     *      },@SWG\Parameter(
+     *         name="guard",
+     *         in="path",
+     *         required=true,
+     *         type="string",
+     *         format="string",
+     *         default="userApi",
+     *         description="userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+     *      ),
      *      @SWG\Response(response=200, description="object"),
      * )
      */
@@ -46,13 +49,73 @@ class ProfileController extends Controller
 
     /**
      *
+     * @SWG\Get(
+     *      tags={"account"},
+     *      path="/account/{guard}/my-product",
+     *      summary="Get my product",
+     *      security={
+     *          {"jwt": {}}
+     *      },@SWG\Parameter(
+     *         name="guard",
+     *         in="path",
+     *         required=true,
+     *         type="string",
+     *         format="string",
+     *         default="userApi",
+     *         description="userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+     *      ),
+     *      @SWG\Response(response=200, description="object"),
+     * )
+     */
+    public function accountProduct()
+    {
+        $product = auth()->user()->callCenter->product;
+        return ProductResource::make($product);
+    }
+
+    /**
+     *
+     * @SWG\Get(
+     *      tags={"account (doctor)"},
+     *      path="/account/{guard}/my-patients-cards",
+     *      summary="Get my product",
+     *      security={
+     *          {"jwt": {}}
+     *      },@SWG\Parameter(
+     *         name="guard",
+     *         in="path",
+     *         required=true,
+     *         type="string",
+     *         format="string",
+     *         default="userApi",
+     *         description="userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+     *      ),
+     *      @SWG\Response(response=200, description="object"),
+     * )
+     */
+    public function myPatientsCards()
+    {
+        $product = auth()->user()->cards()->paginate($this->api_paginate_num);
+        return CardResource::make($product);
+    }
+
+    /**
+     *
      * @SWG\post(
      *      tags={"account"},
-     *      path="/account/update",
+     *      path="/account/{guard}/update",
      *      summary="update My Account",
      *      security={
      *          {"jwt": {}}
-     *      },
+     *      },@SWG\Parameter(
+     *         name="guard",
+     *         in="path",
+     *         required=true,
+     *         type="string",
+     *         format="string",
+     *         default="userApi",
+     *         description="userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+     *      ),
      *      @SWG\Parameter(
      *         name="name",
      *         in="formData",
@@ -71,6 +134,50 @@ class ProfileController extends Controller
      *         name="photo",
      *         in="formData",
      *         type="file",
+     *      ),@SWG\Parameter(
+     *         name="national_id",
+     *         in="formData",
+     *         type="string",
+     *         format="string",
+     *      ),@SWG\Parameter(
+     *         name="age",
+     *         in="formData",
+     *         type="integer",
+     *      ),@SWG\Parameter(
+     *         name="sex",
+     *         in="formData",
+     *         type="integer",
+     *         description="1=>male , 2=>Female",
+     *      ),@SWG\Parameter(
+     *         name="address",
+     *         in="formData",
+     *         type="string",
+     *         format="string",
+     *      ),@SWG\Parameter(
+     *         name="phone",
+     *         in="formData",
+     *         type="string",
+     *         format="string",
+     *      ),@SWG\Parameter(
+     *         name="phone2",
+     *         in="formData",
+     *         type="string",
+     *         format="string",
+     *      ),@SWG\Parameter(
+     *         name="diagnosis",
+     *         in="formData",
+     *         type="string",
+     *         format="string",
+     *      ),@SWG\Parameter(
+     *         name="specialty",
+     *         in="formData",
+     *         type="string",
+     *         format="string",
+     *      ),@SWG\Parameter(
+     *         name="preferred_distributor",
+     *         in="formData",
+     *         type="string",
+     *         format="string",
      *      ),
      *      @SWG\Response(response=200, description="token"),
      *      @SWG\Response(response=400, description="Unauthorized"),
@@ -91,11 +198,19 @@ class ProfileController extends Controller
      *
      * @SWG\post(
      *      tags={"account"},
-     *      path="/account/update-password",
+     *      path="/account/{guard}/update-password",
      *      summary="update My Password",
      *      security={
      *          {"jwt": {}}
-     *      },
+     *      },@SWG\Parameter(
+     *         name="guard",
+     *         in="path",
+     *         required=true,
+     *         type="string",
+     *         format="string",
+     *         default="userApi",
+     *         description="userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+     *      ),
      *      @SWG\Parameter(
      *         name="current_password",
      *         in="formData",
@@ -122,13 +237,38 @@ class ProfileController extends Controller
         {
             if ($request->current_password === $request->password)
             {
-                return $this->responseJson('error', 'Current And New Password is Same',400);
+                return $this->responseJson('Current And New Password is Same',400);
             }
             $user->update(['password'=>$request->password]);
 
             return AccountResource::make($user);
         }
-        return $this->responseJson('error', 'Current Password Wrong',400);
+        return $this->responseJson('Current Password Wrong',400);
+    }
+
+    /**
+     *
+     * @SWG\Get(
+     *      tags={"account"},
+     *      path="/account/{guard}/my-products",
+     *      summary="get my account products",
+     *      security={
+     *          {"jwt": {}}
+     *      },
+     *      @SWG\Response(response=200, description="object"),
+     * )
+     */
+    public function companyProducts()
+    {
+        $user = auth()->user();
+        if ($user->type == 1)
+        {
+            $company=$user->company;
+            $rows = $company->products()->latest()->with('orders')->paginate($this->api_paginate_num);
+            return ProductResource::collection($rows);
+        }
+        $row = $user->product;
+        return ProductResource::make($row);
     }
 
 }

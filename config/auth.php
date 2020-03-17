@@ -65,6 +65,22 @@ return [
             'driver' => 'jwt',
             'provider' => 'users',
         ],
+        'userApi' => [
+            'driver' => 'jwt',
+            'provider' => 'users',
+        ],
+        'companyApi' => [
+            'driver' => 'jwt',
+            'provider' => 'marketing',
+        ],
+        'pharmacyAdminApi' => [
+            'driver' => 'jwt',
+            'provider' => 'pharmacy',
+        ],
+        'pharmacyUsersApi' => [
+            'driver' => 'jwt',
+            'provider' => 'pharmacyUsers',
+        ],
     ],
 
     /*

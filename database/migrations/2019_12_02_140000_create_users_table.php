@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->nullable();
             $table->string('national_id')->nullable();
             $table->integer('age')->nullable();
-            $table->tinyInteger('sex')->nullable();
+            $table->tinyInteger('sex')->nullable(); // 1=>male 2=>Female
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->string('phone2')->nullable();

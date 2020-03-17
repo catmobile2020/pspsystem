@@ -14,13 +14,22 @@
         "http"
     ],
     "paths": {
-        "/auth/users/login": {
+        "/auth/{guard}/login": {
             "post": {
                 "tags": [
-                    "users auth (patient , doctor)"
+                    "auth"
                 ],
                 "summary": "login",
                 "parameters": [
+                    {
+                        "name": "guard",
+                        "in": "path",
+                        "description": "userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "userApi"
+                    },
                     {
                         "name": "username",
                         "in": "formData",
@@ -59,13 +68,22 @@
                 ]
             }
         },
-        "/auth/users/reset-password": {
+        "/auth/{guard}/reset-password": {
             "post": {
                 "tags": [
-                    "users auth (patient , doctor)"
+                    "auth"
                 ],
                 "summary": "reset password",
                 "parameters": [
+                    {
+                        "name": "guard",
+                        "in": "path",
+                        "description": "userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "userApi"
+                    },
                     {
                         "name": "email",
                         "in": "formData",
@@ -96,12 +114,23 @@
                 ]
             }
         },
-        "/auth/users/logout": {
+        "/auth/{guard}/logout": {
             "post": {
                 "tags": [
-                    "users auth (patient , doctor)"
+                    "auth"
                 ],
                 "summary": "logout currently logged in user",
+                "parameters": [
+                    {
+                        "name": "guard",
+                        "in": "path",
+                        "description": "userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "userApi"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "message"
@@ -123,12 +152,23 @@
                 ]
             }
         },
-        "/auth/users/refresh": {
+        "/auth/{guard}/refresh": {
             "post": {
                 "tags": [
-                    "users auth (patient , doctor)"
+                    "auth"
                 ],
                 "summary": "refreshes expired token",
+                "parameters": [
+                    {
+                        "name": "guard",
+                        "in": "path",
+                        "description": "userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "userApi"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "message"
@@ -141,6 +181,94 @@
                     },
                     "403": {
                         "description": "Forbidden The client did not have permission to access the requested resource."
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/companies": {
+            "get": {
+                "tags": [
+                    "companies"
+                ],
+                "summary": "get all companies paginated",
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/companies/{company}": {
+            "get": {
+                "tags": [
+                    "companies"
+                ],
+                "summary": "get single company",
+                "parameters": [
+                    {
+                        "name": "company",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/companies/{company}/products": {
+            "get": {
+                "tags": [
+                    "companies"
+                ],
+                "summary": "get single company products paginated",
+                "parameters": [
+                    {
+                        "name": "company",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/my-patients": {
+            "get": {
+                "tags": [
+                    "patients"
+                ],
+                "summary": "get doctor patients",
+                "responses": {
+                    "200": {
+                        "description": "object"
                     }
                 },
                 "security": [
@@ -202,12 +330,12 @@
                 ]
             }
         },
-        "/account/me": {
+        "/products": {
             "get": {
                 "tags": [
-                    "account"
+                    "products"
                 ],
-                "summary": "Get the current logged in user",
+                "summary": "get all products paginated",
                 "responses": {
                     "200": {
                         "description": "object"
@@ -220,13 +348,161 @@
                 ]
             }
         },
-        "/account/update": {
+        "/products/{product}": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "get single product",
+                "parameters": [
+                    {
+                        "name": "product",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/products/{product}/patients": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "get single product patients paginated",
+                "parameters": [
+                    {
+                        "name": "product",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/account/{guard}/me": {
+            "get": {
+                "tags": [
+                    "account"
+                ],
+                "summary": "Get the current logged in user",
+                "parameters": [
+                    {
+                        "name": "guard",
+                        "in": "path",
+                        "description": "userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "userApi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/account/{guard}/my-product": {
+            "get": {
+                "tags": [
+                    "account"
+                ],
+                "summary": "Get my product",
+                "parameters": [
+                    {
+                        "name": "guard",
+                        "in": "path",
+                        "description": "userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "userApi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/account/{guard}/my-patients-cards": {
+            "get": {
+                "tags": [
+                    "account (doctor)"
+                ],
+                "summary": "Get my product",
+                "parameters": [
+                    {
+                        "name": "guard",
+                        "in": "path",
+                        "description": "userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "userApi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/account/{guard}/update": {
             "post": {
                 "tags": [
                     "account"
                 ],
                 "summary": "update My Account",
                 "parameters": [
+                    {
+                        "name": "guard",
+                        "in": "path",
+                        "description": "userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "userApi"
+                    },
                     {
                         "name": "name",
                         "in": "formData",
@@ -247,6 +523,59 @@
                         "name": "photo",
                         "in": "formData",
                         "type": "file"
+                    },
+                    {
+                        "name": "national_id",
+                        "in": "formData",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "age",
+                        "in": "formData",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "sex",
+                        "in": "formData",
+                        "description": "1=>male , 2=>Female",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "address",
+                        "in": "formData",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "formData",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "phone2",
+                        "in": "formData",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "diagnosis",
+                        "in": "formData",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "specialty",
+                        "in": "formData",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "preferred_distributor",
+                        "in": "formData",
+                        "type": "string",
+                        "format": "string"
                     }
                 ],
                 "responses": {
@@ -264,13 +593,22 @@
                 ]
             }
         },
-        "/account/update-password": {
+        "/account/{guard}/update-password": {
             "post": {
                 "tags": [
                     "account"
                 ],
                 "summary": "update My Password",
                 "parameters": [
+                    {
+                        "name": "guard",
+                        "in": "path",
+                        "description": "userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "userApi"
+                    },
                     {
                         "name": "current_password",
                         "in": "formData",
@@ -292,6 +630,24 @@
                     },
                     "400": {
                         "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/account/{guard}/my-products": {
+            "get": {
+                "tags": [
+                    "account"
+                ],
+                "summary": "get my account products",
+                "responses": {
+                    "200": {
+                        "description": "object"
                     }
                 },
                 "security": [

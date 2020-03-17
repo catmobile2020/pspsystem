@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\CompanyUsers;
 use App\Http\Requests\Api\LoginRequest;
-use App\Http\Requests\Api\RegisterRequest;
 use App\Http\Requests\Api\ResetPasswordRequest;
 use App\Http\Resources\AccountResource;
 use App\Mail\ResetPasswordMail;
+use App\Pharmacy;
+use App\PharmacyUsers;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -14,18 +16,16 @@ use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
-
-
+    public $guard;
     public function __construct()
     {
-        $guard = explode('/',request()->route()->uri())[2];
-        if ($guard == 'users')
-        {
-            $guard ='api';
-        }else
-        {
-            $this->guard = $guard;
-        }
+//        $guard = explode('/',request()->route()->uri())[2];
+        $guard = request()->guard;
+//        if ($guard == 'userApi')
+//        {
+//            $guard ='api';
+//        }
+        $this->guard = $guard;
         $this->middleware('auth:'.$guard, ['except' => ['login','register','resetPassword']]);
         auth()->shouldUse($guard);
     }
@@ -33,13 +33,21 @@ class AuthController extends Controller
     /**
      *
      * @SWG\Post(
-     *      tags={"users auth (patient , doctor)"},
-     *      path="/auth/users/login",
+     *      tags={"auth"},
+     *      path="/auth/{guard}/login",
      *      summary="login",
      *      security={
      *          {"jwt": {}}
      *      },
      *      @SWG\Parameter(
+     *         name="guard",
+     *         in="path",
+     *         required=true,
+     *         type="string",
+     *         format="string",
+     *         default="userApi",
+     *         description="userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+     *      ),@SWG\Parameter(
      *         name="username",
      *         in="formData",
      *         required=true,
@@ -66,7 +74,21 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
         $username = $request->username;
-        $row = User::where(function ($q) use ($username){
+        switch ($this->guard)
+        {
+            case 'companyApi':
+                $model = 'App\CompanyUsers';
+                break;
+            case 'pharmacyAdminApi':
+                $model = 'App\Pharmacy';
+                break;
+            case 'pharmacyUsersApi':
+                $model = 'App\PharmacyUsers';
+                break;
+            default:
+                $model = 'App\User';
+        }
+        $row = $model::where(function ($q) use ($username){
             $q->where('username',$username)->orWhere('email',$username);
         })->first();
         if ($row)
@@ -74,7 +96,11 @@ class AuthController extends Controller
             if (Hash::check($request->password,$row->password))
             {
                 $token =  auth()->login($row);
-                return $this->respondWithToken($token);
+                if ($token)
+                {
+                    return $this->respondWithToken($token);
+                }
+                return $this->responseJson('You Try To Login in Another privileges',401);
             }
             return $this->responseJson('Email Or Password Is Invalid.',401);
         }
@@ -84,12 +110,21 @@ class AuthController extends Controller
     /**
      *
      * @SWG\Post(
-     *      tags={"users auth (patient , doctor)"},
-     *      path="/auth/users/reset-password",
+     *      tags={"auth"},
+     *      path="/auth/{guard}/reset-password",
      *      summary="reset password",
      *      security={
      *          {"jwt": {}}
      *      },
+     *      @SWG\Parameter(
+     *         name="guard",
+     *         in="path",
+     *         required=true,
+     *         type="string",
+     *         format="string",
+     *         default="userApi",
+     *         description="userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+     *      ),
      *      @SWG\Parameter(
      *         name="email",
      *         in="formData",
@@ -128,12 +163,21 @@ class AuthController extends Controller
     /**
      *
      * @SWG\Post(
-     *      tags={"users auth (patient , doctor)"},
-     *      path="/auth/users/logout",
+     *      tags={"auth"},
+     *      path="/auth/{guard}/logout",
      *      summary="logout currently logged in user",
      *      security={
      *          {"jwt": {}}
      *      },
+     *      @SWG\Parameter(
+     *         name="guard",
+     *         in="path",
+     *         required=true,
+     *         type="string",
+     *         format="string",
+     *         default="userApi",
+     *         description="userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+     *      ),
      *      @SWG\Response(response=200, description="message"),
      *      @SWG\Response(response=401, description="Unauthorized"),
      *      @SWG\Response(response=422, description="Validation Error"),
@@ -149,12 +193,21 @@ class AuthController extends Controller
     /**
      *
      * @SWG\Post(
-     *      tags={"users auth (patient , doctor)"},
-     *      path="/auth/users/refresh",
+     *      tags={"auth"},
+     *      path="/auth/{guard}/refresh",
      *      summary="refreshes expired token",
      *      security={
      *          {"jwt": {}}
      *      },
+     *      @SWG\Parameter(
+     *         name="guard",
+     *         in="path",
+     *         required=true,
+     *         type="string",
+     *         format="string",
+     *         default="userApi",
+     *         description="userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+     *      ),
      *      @SWG\Response(response=200, description="message"),
      *      @SWG\Response(response=401, description="Unauthorized"),
      *      @SWG\Response(response=422, description="Validation Error"),
@@ -178,8 +231,8 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 60,
-            'account' => AccountResource::make(auth('api')->user()),
+            'expires_in' => auth()->factory()->getTTL() * 60,
+            'account' => AccountResource::make(auth()->user()),
         ]);
     }
 }
