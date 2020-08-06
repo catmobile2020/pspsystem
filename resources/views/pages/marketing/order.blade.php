@@ -53,8 +53,8 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$row->serial_number}}</td>
                                         <td>{{$row->patient->serial_number}}</td>
-                                        <td>{{$row->patient->age}}</td>
                                         <td>{{$row->patient->sex ? 'Male' : 'Female'}}</td>
+                                        <td>{{$row->patient->age}}</td>
                                         <td>{{$row->patient->governorate->name}}</td>
                                         <td>{{$row->pharmacyUser->pharmacy->name}}</td>
                                         <td>{{$row->pharmacyUser->name}}</td>

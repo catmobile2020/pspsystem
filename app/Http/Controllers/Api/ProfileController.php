@@ -20,6 +20,7 @@ class ProfileController extends Controller
 //        $guard = explode('/',request()->route()->uri())[2];
         $guard = request()->guard;
         auth()->shouldUse($guard);
+        $this->middleware('auth:'.$guard);
     }
 
     /**
@@ -77,19 +78,11 @@ class ProfileController extends Controller
      *
      * @SWG\Get(
      *      tags={"account (doctor)"},
-     *      path="/account/{guard}/my-patients-cards",
+     *      path="/account/userApi/my-patients-cards",
      *      summary="Get my product",
      *      security={
      *          {"jwt": {}}
-     *      },@SWG\Parameter(
-     *         name="guard",
-     *         in="path",
-     *         required=true,
-     *         type="string",
-     *         format="string",
-     *         default="userApi",
-     *         description="userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
-     *      ),
+     *      },
      *      @SWG\Response(response=200, description="object"),
      * )
      */
@@ -254,7 +247,15 @@ class ProfileController extends Controller
      *      summary="get my account products",
      *      security={
      *          {"jwt": {}}
-     *      },
+     *      },@SWG\Parameter(
+     *         name="guard",
+     *         in="path",
+     *         required=true,
+     *         type="string",
+     *         format="string",
+     *         default="userApi",
+     *         description="userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+     *      ),
      *      @SWG\Response(response=200, description="object"),
      * )
      */
@@ -264,8 +265,12 @@ class ProfileController extends Controller
         if ($user->type == 1)
         {
             $company=$user->company;
-            $rows = $company->products()->latest()->with('orders')->paginate($this->api_paginate_num);
-            return ProductResource::collection($rows);
+            if ($company)
+            {
+                $rows = $company->products()->latest()->with('orders')->paginate($this->api_paginate_num);
+                return ProductResource::collection($rows);
+            }
+           return null;
         }
         $row = $user->product;
         return ProductResource::make($row);

@@ -458,23 +458,12 @@
                 ]
             }
         },
-        "/account/{guard}/my-patients-cards": {
+        "/account/userApi/my-patients-cards": {
             "get": {
                 "tags": [
                     "account (doctor)"
                 ],
                 "summary": "Get my product",
-                "parameters": [
-                    {
-                        "name": "guard",
-                        "in": "path",
-                        "description": "userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
-                        "required": true,
-                        "type": "string",
-                        "format": "string",
-                        "default": "userApi"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "object"
@@ -645,6 +634,17 @@
                     "account"
                 ],
                 "summary": "get my account products",
+                "parameters": [
+                    {
+                        "name": "guard",
+                        "in": "path",
+                        "description": "userApi , companyApi , pharmacyAdminApi , pharmacyUsersApi ",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "userApi"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "object"

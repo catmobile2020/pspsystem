@@ -76,6 +76,6 @@ class ProductController extends Controller
     {
         $call_centers_ids = $product->callCenters()->pluck('id')->toArray();
         $rows = User::where('type',1)->whereIn('call_center_id',$call_centers_ids)->paginate($this->api_paginate_num);
-        return UsersResource::make($rows);
+        return UsersResource::collection($rows);
     }
 }
