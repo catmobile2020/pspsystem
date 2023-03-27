@@ -53,27 +53,14 @@
                                     <input type="email" name="email" class="form-control" id="email" placeholder="email" value="{{$callcenter->email}}">
                                 </div>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="title">Company</label>
-                                    <select name="" class="form-control changeCompany">
-                                        <option selected disabled value>Select Company</option>
-                                        @foreach($companies as $company)
-                                            <option value="{{$company->id}}" {{in_array($callcenter->product_id ,$company->products()->pluck('id')->toArray()) ? 'selected' : ''}}>{{$company->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="form-group insertCompanyProduct">
                                     <label for="title">Product</label>
                                     <select name="product_id" class="form-control">
                                         <option selected value>Select Product</option>
-                                        @isset($callcenter->id)
-                                            @foreach($callcenter->product->company->products as $product)
-                                                <option value="{{$product->id}}" {{$callcenter->product_id == $product->id ? 'selected' : ''}}>{{$product->name}}</option>
-                                            @endforeach
-                                        @endisset
+                                        @foreach($products as $product)
+                                            <option value="{{$product->id}}" {{$callcenter->product_id == $product->id ? 'selected' : ''}}>{{$product->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -99,25 +86,4 @@
             </div>
         </div>
     </div>
-@endsection
-@section('js')
-<script>
-    $(document).on('change','.changeCompany',function () {
-        let value = $(this).val();
-        if (!value)
-        {
-            return;
-        }
-        $.ajax({
-            url:'/admin/callcenters/companies/'+value,
-            success:function (result) {
-                console.log(result);
-                $('.insertCompanyProduct').html(result);
-            },
-            error:function (errors) {
-                console.log(errors);
-            }
-        });
-    });
-</script>
 @endsection

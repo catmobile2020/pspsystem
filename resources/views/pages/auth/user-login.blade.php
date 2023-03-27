@@ -68,7 +68,7 @@
                 </div>
             @endif
         <h2><strong>Welcome</strong>, please login</h2>
-        <form method="POST" action="{{ route('users.login') }}">
+        <form method="POST" action="{{ route('user.login') }}">
            {{csrf_field()}}
             <div class="form-group{{ $errors->has('username') || $errors->has('email') ? ' has-error' : '' }}">
 

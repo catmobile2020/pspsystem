@@ -412,15 +412,6 @@
             </div>
             @endif
             @if (auth('pharmacy')->check())
-                <div class='thing text-center'>
-                    <a href="{{route('users.index')}}">
-                        <img src="{{asset('assets/icons/patients.png')}}" style="height: 50px;">
-                        <p class="title">Users</p>
-                        <p class="help-block">Pharmacy Users</p>
-                    </a>
-                </div>
-            @endif
-            @if (auth('pharmacyUsers')->check())
                 @foreach($companies as $company)
                     <div class='thing text-center'>
                         <a href="{{route('single-company',$company->id)}}">
@@ -439,35 +430,6 @@
                     </a>
                 </div>
             @endif
-
-            @if (auth('web')->check())
-                @if (auth('web')->user()->type == 1)
-                    <div class='thing text-center'>
-                        <a href="{{route('my-orders.index')}}">
-                            <img src="{{asset('assets/icons/company.png')}}" style="height: 50px;">
-                            <p class="title">My Orders</p>
-                            <p class="help-block">Show All Orders</p>
-                        </a>
-                    </div>
-                @endif
-                @if (auth('web')->user()->type == 4)
-                        <div class='thing text-center'>
-                            <a href="{{route('doctor.patients-cards',auth('web')->user()->id)}}">
-                                <img src="{{asset('assets/icons/statistics.png')}}" style="height: 50px;">
-                                <p class="title">My Patients Card</p>
-                                <p class="help-block">Show Patients Card</p>
-                            </a>
-                        </div>
-                    <div class='thing text-center'>
-                        <a href="{{route('product-patients.index')}}">
-                            <img src="{{auth('web')->user()->callCenter->product->photo}}" style="height: 50px;">
-                            <p class="title">{{auth('web')->user()->callCenter->product->name}}</p>
-                            <p class="help-block">Show All Product Patients</p>
-                        </a>
-                    </div>
-                @endif
-            @endif
-
             <div class='thing text-center'>
                 <a href="{{route(explode('/',request()->route()->uri())[0].'.logout')}}">
                     <img src="{{asset('assets/icons/logout.png')}}" style="height: 50px;">

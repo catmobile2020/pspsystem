@@ -56,30 +56,10 @@ return [
             'driver' => 'session',
             'provider' => 'pharmacy',
         ],
-        'pharmacyUsers' => [
-            'driver' => 'session',
-            'provider' => 'pharmacyUsers',
-        ],
 
         'api' => [
-            'driver' => 'jwt',
+            'driver' => 'token',
             'provider' => 'users',
-        ],
-        'userApi' => [
-            'driver' => 'jwt',
-            'provider' => 'users',
-        ],
-        'companyApi' => [
-            'driver' => 'jwt',
-            'provider' => 'marketing',
-        ],
-        'pharmacyAdminApi' => [
-            'driver' => 'jwt',
-            'provider' => 'pharmacy',
-        ],
-        'pharmacyUsersApi' => [
-            'driver' => 'jwt',
-            'provider' => 'pharmacyUsers',
         ],
     ],
 
@@ -120,10 +100,6 @@ return [
         'pharmacy' => [
             'driver' => 'eloquent',
             'model' => App\Pharmacy::class,
-        ],
-        'pharmacyUsers' => [
-            'driver' => 'eloquent',
-            'model' => App\PharmacyUsers::class,
         ],
 
         // 'users' => [
@@ -170,11 +146,6 @@ return [
         ],
         'pharmacy' => [
             'provider' => 'pharmacy',
-            'table' => 'password_resets',
-            'expire' => 60,
-        ],
-        'pharmacyUsers' => [
-            'provider' => 'pharmacyUsers',
             'table' => 'password_resets',
             'expire' => 60,
         ],

@@ -15,7 +15,7 @@ class AdminTableSeeder extends Seeder
             'name'=>'admin',
             'username'=>'admin',
             'type'=>1,
-            'email'=>'m.mohamed@cat.com.eg',
+            'email'=>'adesouky@cat.com.eg',
             'password'=>123456,
         ];
 

@@ -2,13 +2,8 @@
 
 namespace App\Exceptions;
 
-use Exception;
-use Illuminate\Auth\AuthenticationException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+Use Throwable as Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\ValidationException;
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -42,65 +37,15 @@ class Handler extends ExceptionHandler
         parent::report($exception);
     }
 
-    protected function unauthenticated($request, AuthenticationException $exception)
-    {
-        if (!$request->expectsJson())
-        {
-            return  redirect()->guest(route('admin.login'));
-        }
-        $result = [
-            'type' => request()->fullUrl(),
-            'title' => 'Unauthenticated.',
-        ];
-        throw new HttpResponseException(response()->json($result , 401));
-    }
-
     /**
      * Render an exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Exception  $exception
-     * @return \Symfony\Component\HttpFoundation\Response
-     *
-     * @throws \Exception
+     * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
     {
-        if ($exception instanceof UnauthorizedHttpException) {
-            $preException = $exception->getPrevious();
-            if ($preException instanceof
-                \Tymon\JWTAuth\Exceptions\TokenExpiredException) {
-                return response()->json(['error' => 'TOKEN_EXPIRED']);
-            } else if ($preException instanceof
-                \Tymon\JWTAuth\Exceptions\TokenInvalidException) {
-                return response()->json(['error' => 'TOKEN_INVALID']);
-            } else if ($preException instanceof
-                \Tymon\JWTAuth\Exceptions\TokenBlacklistedException) {
-                return response()->json(['error' => 'TOKEN_BLACKLISTED']);
-            }
-            if ($exception->getMessage() === 'Token not provided') {
-                return response()->json(['error' => 'Token not provided']);
-            }
-        }
-
-        if ($exception instanceof ModelNotFoundException && $request->wantsJson()) {
-            $result = [
-                'type' => request()->fullUrl(),
-                'title' => 'Resource not found',
-            ];
-            throw new HttpResponseException(response()->json($result , 404));
-        }
         return parent::render($request, $exception);
-    }
-
-    protected function invalidJson($request, ValidationException $exception)
-    {
-        $result = [
-            'type' => $request->url(),
-            'title' => "Your request parameters didn't validate.",
-            'message' => $exception->validator->errors()->all(),
-            'errors' => $exception->errors(),
-        ];
-        throw new HttpResponseException(response()->json($result , $exception->status));
     }
 }

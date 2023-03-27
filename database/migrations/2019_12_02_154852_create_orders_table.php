@@ -28,8 +28,8 @@ class CreateOrdersTable extends Migration
             $table->foreign('product_id')->references('id')->on('products');
             $table->unsignedInteger('patient_id')->nullable();
             $table->foreign('patient_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedInteger('pharmacy_users_id')->nullable();
-            $table->foreign('pharmacy_users_id')->references('id')->on('pharmacy_users')->onDelete('cascade');
+            $table->unsignedInteger('pharmacy_id')->nullable();
+            $table->foreign('pharmacy_id')->references('id')->on('pharmacies')->onDelete('cascade');
             $table->timestamps();
         });
     }

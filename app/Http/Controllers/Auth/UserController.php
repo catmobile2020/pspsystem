@@ -40,6 +40,6 @@ class UserController extends Controller
     {
         auth()->guard('web')->logout();
         request()->session()->invalidate();
-        return redirect()->route('users.login');
+        return redirect()->route('user.login');
     }
 }

@@ -33,14 +33,13 @@ class Pharmacy extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 
     public function governorate()
     {
         return $this->belongsTo(Governorate::class);
-    }
-
-    public function users()
-    {
-        return $this->hasMany(PharmacyUsers::class);
     }
 }

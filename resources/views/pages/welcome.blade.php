@@ -61,19 +61,13 @@
                 <a href="marketing">Company Users</a>
             </li>
             <li class="list-group-item">
-                <a href="pharmacy">Pharmacy</a>
-            </li>
-            <li class="list-group-item">
-                <a href="pharmacyUsers">Pharmacy Users</a>
+                <a href="pharmacy">pharmacy</a>
             </li>
             <li class="list-group-item">
                 <a href="callcenter">Call Center</a>
             </li>
             <li class="list-group-item">
-                <a href="users">Doctor</a>
-            </li>
-            <li class="list-group-item">
-                <a href="users">Patient</a>
+                <a href="user">user</a>
             </li>
 
             <li class="list-group-item">

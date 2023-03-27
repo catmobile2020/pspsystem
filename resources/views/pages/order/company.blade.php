@@ -183,7 +183,7 @@
     <div class="flexgrid">
         <div class='container'>
 
-            @if (auth('pharmacyUsers')->check())
+            @if (auth('pharmacy')->check())
                 <div class='thing text-center'>
                     <a href="{{route('orders.index',$single->id)}}">
                         <img src="{{asset('assets/icons/orders.png')}}" style="height: 50px;">

@@ -84,7 +84,6 @@
                                     <th>specialty</th>
                                     <th>call center</th>
                                     <th>Created At</th>
-                                    <th>Patient Cards</th>
                                     <th>Action</th>
                                 </tr>
                                 </tfoot>
